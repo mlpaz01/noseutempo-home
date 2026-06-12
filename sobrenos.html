@@ -1206,34 +1206,80 @@
       .cta-panel {
         background: rgba(255, 255, 255, 0.64) !important;
       }
+
+      /* Cabecalho padronizado igual ao da home */
+      .std-header {
+        width: min(1200px, calc(100% - 72px)) !important;
+        margin: 0 auto !important;
+        display: grid !important;
+        grid-template-columns: 1fr auto 1fr !important;
+        align-items: center !important;
+        gap: 28px !important;
+        min-height: 92px !important;
+        position: static !important;
+        background: transparent !important;
+        border: 0 !important;
+        box-shadow: none !important;
+        backdrop-filter: none !important;
+      }
+      .std-header .brand img {
+        width: 282px;
+        max-width: 100%;
+      }
+      .std-header .main-nav {
+        display: flex;
+        align-items: center;
+        gap: 54px;
+        color: #07194b;
+        font-size: 16px;
+        font-weight: 700;
+      }
+      .std-header .main-nav a {
+        position: relative;
+        padding: 0;
+        color: #07194b;
+      }
+      .std-header .main-nav a.active,
+      .std-header .main-nav a:hover {
+        color: #6545d6;
+      }
+      .std-header > .button {
+        justify-self: end;
+      }
+      .std-header .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        min-height: 52px;
+        padding: 0 30px;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        font-size: 16px;
+        font-weight: 800;
+        white-space: nowrap;
+        text-decoration: none;
+      }
+      .std-header .button-primary {
+        color: #fff;
+        background: linear-gradient(120deg, #26a8df 0%, #7632d4 100%);
+        box-shadow: 0 14px 30px rgba(96, 63, 214, 0.25);
+      }
     </style>
   </head>
   <body>
     <div class="page">
-      <header class="site-header" id="inicio">
-        <a class="logo-lockup" href="./index.html" aria-label="NoSeuTempo, voltar ao início">
-          <span class="logo-mark" aria-hidden="true">
-            <span class="lm-arc"></span>
-            <svg viewBox="0 0 100 100" class="lm-hands">
-              <g fill="none" stroke-width="9" stroke-linecap="round">
-                <path d="M50 50 V28"></path>
-                <path d="M50 50 H72"></path>
-              </g>
-              <path class="lm-arrow" d="M72 64 L86 60 L78 74 Z"></path>
-            </svg>
-          </span>
-          <span class="logo-word">NoSeu<span class="t">Tempo</span></span>
+      <header class="site-header std-header" id="inicio">
+        <a class="brand" href="index.html" aria-label="NoSeuTempo">
+          <img src="assets/home/logo.png" alt="NoSeuTempo" />
         </a>
 
         <nav class="main-nav" aria-label="Navegação principal">
-          <a href="./index.html">Início</a>
-          <a class="active" href="./sobrenos.html">Sobre nós</a>
+          <a href="index.html">Início</a>
+          <a class="active" href="sobrenos.html">Sobre nós</a>
         </nav>
 
-        <div class="header-actions">
-          <a class="btn btn-ghost" href="plataforma.html">Entrar</a>
-          <a class="btn btn-primary" href="cadastro.html">Criar minha conta</a>
-        </div>
+        <a class="button button-primary" href="plataforma.html">Acessar plataforma <span aria-hidden="true">→</span></a>
       </header>
 
       <main>
