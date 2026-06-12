@@ -146,7 +146,8 @@ main {
 }
 
 .hero-visual img {
-  width: min(440px, 100%);
+  width: min(470px, 100%);
+  border-radius: 18px;
   filter: drop-shadow(0 22px 30px rgba(55, 42, 112, 0.16));
 }
 
@@ -796,6 +797,10 @@ main {
   .hero-visual {
     min-height: 300px;
     order: 2;
+  }
+
+  .hero-visual img {
+    width: 100%;
   }
 
   .geni-card {
