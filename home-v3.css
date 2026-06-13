@@ -725,6 +725,99 @@ main {
   border-right: 1px solid var(--line);
 }
 
+/* ====== Secao 2 colunas (texto+imagem | diferenciais) ====== */
+.story-2col {
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+  padding: 40px 44px;
+}
+.story-2col .story-left {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+.story-2col .story-photo img {
+  width: 100%;
+  border-radius: 20px;
+}
+.story-2col .story-copy {
+  padding-right: 0;
+  border-right: 0;
+}
+.story-2col .story-copy h2 {
+  font-size: 27px;
+  line-height: 1.25;
+  margin: 0 0 16px;
+}
+.story-2col .story-copy p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--muted);
+  margin: 0 0 14px;
+}
+.story-2col .story-copy p:last-child { margin-bottom: 0; }
+
+.story-2col .difference h2 {
+  font-size: 26px;
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* Grid de diferenciais premium */
+.diff-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px 28px;
+  margin-top: 30px;
+}
+.diff-item {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.diff-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 15px;
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+.diff-icon svg {
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.diff-item strong {
+  display: block;
+  color: #07194b;
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.3;
+}
+.diff-item p {
+  margin: 0;
+  color: #5c6592;
+  font-size: 14.5px;
+  line-height: 1.65;
+}
+.ic-blue   { color: #2397df; background: rgba(35, 151, 223, 0.1); }
+.ic-purple { color: #6f43d6; background: rgba(111, 67, 214, 0.1); }
+.ic-green  { color: #0ea892; background: rgba(14, 168, 146, 0.1); }
+.ic-orange { color: #eb7a2f; background: rgba(235, 122, 47, 0.1); }
+
+@media (max-width: 900px) {
+  .story-2col { grid-template-columns: 1fr; gap: 36px; padding: 32px 24px; }
+}
+@media (max-width: 560px) {
+  .diff-grid { grid-template-columns: 1fr; }
+}
+
 .difference-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
