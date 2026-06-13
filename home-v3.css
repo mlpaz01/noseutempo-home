@@ -808,6 +808,13 @@ main {
   margin: 28px auto 0;
 }
 
+/* Grid de personas com ilustracoes (6 colunas) */
+.persona-grid {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 16px;
+  max-width: 100%;
+}
+
 .empathy-card {
   --card-color: #2397df;
   display: flex;
@@ -822,10 +829,30 @@ main {
   transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
 }
 
+/* Card de persona: vertical, ilustracao em cima e rotulo embaixo */
+.persona-grid .empathy-card {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  min-height: 0;
+  padding: 12px 12px 14px;
+  border-radius: 16px;
+  text-align: center;
+}
+
 .empathy-card:hover {
   transform: translateY(-2px);
   border-color: color-mix(in srgb, var(--card-color) 42%, #dce3eb);
   box-shadow: 0 16px 34px rgba(20, 33, 75, 0.08);
+}
+
+.persona-img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 12px;
+  background: #f4f6fb;
+  display: block;
 }
 
 .empathy-icon {
@@ -845,6 +872,11 @@ main {
   font-size: 18px;
   font-weight: 800;
   line-height: 1.15;
+}
+
+.persona-grid .empathy-card strong {
+  color: var(--card-color);
+  font-size: 15px;
 }
 
 .empathy-card.blue { --card-color: #238cc8; }
@@ -945,6 +977,10 @@ main {
 
   .empathy-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .persona-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -1049,6 +1085,10 @@ main {
   .empathy-grid,
   .closing-strip {
     grid-template-columns: 1fr;
+  }
+
+  .persona-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .empathy-list {

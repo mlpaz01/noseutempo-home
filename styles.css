@@ -768,7 +768,7 @@ main {
 
 .empathy-list {
   margin-top: 28px;
-  padding: 34px 44px 42px;
+  padding: 32px 38px 38px;
   border: 1px solid var(--line);
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.92);
@@ -798,23 +798,27 @@ main {
 
 .empathy-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 14px;
-  max-width: 900px;
-  margin: 28px auto 0;
+  max-width: 1120px;
+  margin: 26px auto 0;
 }
 
 .empathy-card {
   --card-color: #2397df;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 96px auto;
+  justify-items: center;
   align-items: center;
-  gap: 18px;
-  min-height: 86px;
-  padding: 16px 20px;
-  border: 1px solid #dce3eb;
+  gap: 8px;
+  min-height: 156px;
+  padding: 13px 10px 10px;
+  border: 1px solid color-mix(in srgb, var(--card-color) 48%, #dce3eb);
+  border-bottom-width: 4px;
   border-radius: 10px;
   background: #ffffff;
-  box-shadow: 0 8px 22px rgba(20, 33, 75, 0.03);
+  box-shadow: 0 8px 20px rgba(20, 33, 75, 0.04);
   transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
 }
 
@@ -824,23 +828,20 @@ main {
   box-shadow: 0 16px 34px rgba(20, 33, 75, 0.08);
 }
 
-.empathy-icon {
-  width: 54px;
-  height: 54px;
-  flex: 0 0 54px;
-  color: var(--card-color);
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.7;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+.empathy-illustration {
+  width: 100%;
+  max-width: 132px;
+  height: 92px;
+  object-fit: contain;
+  margin: 0 auto;
 }
 
 .empathy-card strong {
   color: #07194b;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 800;
-  line-height: 1.15;
+  line-height: 1.05;
+  text-align: center;
 }
 
 .empathy-card.blue { --card-color: #238cc8; }
@@ -940,7 +941,7 @@ main {
   }
 
   .empathy-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
   }
 }
 
@@ -1042,9 +1043,13 @@ main {
   .audience-row,
   .journey-grid,
   .difference-grid,
-  .empathy-grid,
   .closing-strip {
     grid-template-columns: 1fr;
+  }
+
+  .empathy-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
   }
 
   .empathy-list {
@@ -1060,14 +1065,17 @@ main {
   }
 
   .empathy-card {
-    min-height: 78px;
-    padding: 14px 16px;
+    min-height: 142px;
+    padding: 10px 8px 9px;
   }
 
-  .empathy-icon {
-    width: 46px;
-    height: 46px;
-    flex-basis: 46px;
+  .empathy-illustration {
+    max-width: 122px;
+    height: 82px;
+  }
+
+  .empathy-card strong {
+    font-size: 13px;
   }
 
   .closing-strip span {
