@@ -1236,6 +1236,69 @@
         width: 282px;
         max-width: 100%;
       }
+      .std-header .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .std-header .logo-mark {
+        position: relative;
+        width: 54px;
+        height: 52px;
+        flex: 0 0 auto;
+        color: var(--ink);
+        filter: drop-shadow(0 0 8px rgba(36, 143, 223, .13));
+      }
+      .std-header .logo-mark::before,
+      .std-header .logo-mark::after {
+        position: absolute;
+        z-index: 3;
+        left: 25px;
+        bottom: 18px;
+        content: "";
+        border-radius: 999px;
+        background: var(--ink);
+        transform-origin: 2px calc(100% - 2px);
+      }
+      .std-header .logo-mark::before {
+        width: 4px;
+        height: 18px;
+        animation: logoMinuteHand 7s ease-in-out infinite;
+      }
+      .std-header .logo-mark::after {
+        width: 4px;
+        height: 13px;
+        animation: logoHourHand 11s ease-in-out infinite;
+      }
+      .std-header .brand .logo-clock,
+      .std-header .brand .logo-ring {
+        width: 54px;
+        height: 52px;
+        max-width: none;
+      }
+      .std-header .brand .logo-ring {
+        position: absolute;
+        inset: 0;
+        transform-origin: 50% 50%;
+        animation: logoRingSpin 8s linear infinite;
+        will-change: transform;
+      }
+      .std-header .brand .logo-wordmark {
+        width: 186px;
+        height: auto;
+        max-width: none;
+      }
+      @keyframes logoRingSpin {
+        to { transform: rotate(360deg); }
+      }
+      @keyframes logoMinuteHand {
+        0%, 100% { transform: rotate(0deg); }
+        50% { transform: rotate(22deg); }
+      }
+      @keyframes logoHourHand {
+        0%, 100% { transform: rotate(-90deg); }
+        50% { transform: rotate(-66deg); }
+      }
       .std-header .main-nav {
         display: flex;
         align-items: center;
@@ -1332,6 +1395,13 @@
       .click-card:focus-visible {
         border-color: color-mix(in srgb, var(--purple) 24%, var(--line)) !important;
       }
+      @media (prefers-reduced-motion: reduce) {
+        .std-header .brand .logo-ring,
+        .std-header .logo-mark::before,
+        .std-header .logo-mark::after {
+          animation: none;
+        }
+      }
       html,
       body {
         background:
@@ -1345,7 +1415,11 @@
     <div class="page">
       <header class="site-header std-header" id="inicio">
         <a class="brand" href="index.html" aria-label="NoSeuTempo">
-          <img src="assets/home/logo.png?v=2" alt="NoSeuTempo" />
+          <span class="logo-mark" aria-hidden="true">
+            <img class="logo-clock" src="assets/home/logo-clock.png" alt="" />
+            <img class="logo-ring" src="assets/home/logo-ring.png" alt="" />
+          </span>
+          <img class="logo-wordmark" src="assets/home/logo-wordmark.png" alt="NoSeuTempo" />
         </a>
 
         <nav class="main-nav" aria-label="Navegação principal">
