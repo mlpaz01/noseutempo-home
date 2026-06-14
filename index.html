@@ -27,7 +27,10 @@
         margin: 0;
         overflow-x: hidden;
         color: var(--text);
-        background: #ffffff;
+        background:
+          radial-gradient(circle at 18% 7%, rgba(35, 143, 223, 0.07), transparent 25%),
+          radial-gradient(circle at 82% 4%, rgba(107, 52, 223, 0.08), transparent 25%),
+          linear-gradient(180deg, #fff 0%, #fbfcff 55%, #fff 100%);
         font-family: Inter, "Segoe UI", Arial, sans-serif;
       }
       a { color: inherit; text-decoration: none; }
@@ -53,28 +56,6 @@
         width: 54px;
         height: 52px;
         flex: 0 0 auto;
-        filter: drop-shadow(0 0 8px rgba(36, 143, 223, .13));
-      }
-      .logo-mark::before,
-      .logo-mark::after {
-        position: absolute;
-        z-index: 3;
-        left: 25px;
-        bottom: 18px;
-        content: "";
-        border-radius: 999px;
-        background: var(--ink);
-        transform-origin: 2px calc(100% - 2px);
-      }
-      .logo-mark::before {
-        width: 4px;
-        height: 18px;
-        animation: logoMinuteHand 7s ease-in-out infinite;
-      }
-      .logo-mark::after {
-        width: 4px;
-        height: 13px;
-        animation: logoHourHand 11s ease-in-out infinite;
       }
       .logo-clock,
       .logo-ring {
@@ -98,14 +79,6 @@
       }
       @keyframes logoRingSpin {
         to { transform: rotate(360deg); }
-      }
-      @keyframes logoMinuteHand {
-        0%, 100% { transform: rotate(0deg); }
-        50% { transform: rotate(22deg); }
-      }
-      @keyframes logoHourHand {
-        0%, 100% { transform: rotate(-90deg); }
-        50% { transform: rotate(-66deg); }
       }
       .nav { display: flex; gap: 54px; justify-content: center; font-size: 14px; font-weight: 850; color: var(--ink); }
       .nav a.active { color: var(--purple); }
@@ -132,7 +105,6 @@
         gap: 28px;
         align-items: start;
         padding: 46px 0 36px;
-        background: #fff;
       }
       .badge {
         display: inline-flex;
@@ -196,64 +168,27 @@
 
       .hero-art {
         position: relative;
-        min-height: 610px;
+        min-height: 560px;
       }
       .family-hero {
         position: absolute;
-        left: -42px;
-        top: -2px;
+        left: -12px;
+        top: 28px;
         z-index: 2;
-        width: 895px;
+        width: 780px;
         max-width: none;
-        animation: heroFloat 7s ease-in-out infinite;
+        filter: drop-shadow(0 24px 34px rgba(36, 42, 96, .12));
       }
       .hero-ring {
         position: absolute;
         z-index: 1;
-        right: 52px;
-        top: 20px;
+        right: 80px;
+        top: 38px;
         width: 455px;
         height: 455px;
         border: 1px dashed rgba(107, 52, 223, .22);
         border-radius: 50%;
-        background: transparent;
-      }
-      .learning-particles {
-        position: absolute;
-        z-index: 3;
-        inset: 28px 74px 78px 18px;
-        pointer-events: none;
-      }
-      .learning-particles::before,
-      .learning-particles::after {
-        position: absolute;
-        width: 6px;
-        height: 6px;
-        content: "";
-        border-radius: 50%;
-        opacity: .72;
-        background: var(--teal);
-        box-shadow:
-          90px 20px 0 rgba(107, 52, 223, .55),
-          178px 72px 0 rgba(36, 143, 223, .5),
-          330px 28px 0 rgba(255, 138, 34, .5),
-          485px 120px 0 rgba(9, 169, 160, .5),
-          560px 32px 0 rgba(107, 52, 223, .5),
-          630px 210px 0 rgba(36, 143, 223, .45);
-        animation: particleFlow 9s ease-in-out infinite;
-      }
-      .learning-particles::after {
-        right: 56px;
-        bottom: 92px;
-        width: 18px;
-        height: 18px;
-        border: 2px solid rgba(107, 52, 223, .42);
-        background: transparent;
-        box-shadow:
-          -88px -46px 0 -6px rgba(255, 138, 34, .58),
-          -210px 18px 0 -6px rgba(9, 169, 160, .55),
-          -380px -80px 0 -6px rgba(36, 143, 223, .5);
-        animation: particleFlowAlt 10s ease-in-out infinite;
+        background: radial-gradient(circle, rgba(126, 87, 226, .08), transparent 62%);
       }
       .side-icons {
         position: absolute;
@@ -282,18 +217,6 @@
         box-shadow: 0 15px 28px color-mix(in srgb, var(--c) 25%, transparent);
       }
       .side-feature svg { width: 36px; height: 36px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-      @keyframes heroFloat {
-        0%, 100% { transform: translate3d(0, 0, 0); }
-        50% { transform: translate3d(0, -10px, 0); }
-      }
-      @keyframes particleFlow {
-        0%, 100% { transform: translate3d(0, 0, 0); opacity: .6; }
-        50% { transform: translate3d(12px, -16px, 0); opacity: .92; }
-      }
-      @keyframes particleFlowAlt {
-        0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); opacity: .48; }
-        50% { transform: translate3d(-14px, 10px, 0) rotate(18deg); opacity: .82; }
-      }
 
       .value-strip {
         display: grid;
@@ -507,9 +430,8 @@
         .hero-actions { flex-direction: column; }
         .hero-actions .btn { width: 100%; }
         .hero-art { min-height: 600px; }
-        .family-hero { left: -20px; right: auto; top: auto; bottom: 28px; width: 420px; max-width: none; }
+        .family-hero { left: -20px; right: auto; bottom: 28px; width: 420px; max-width: none; }
         .hero-ring { top: 80px; right: -70px; width: 330px; height: 330px; }
-        .learning-particles { inset: 70px 8px 120px 8px; }
         .side-icons { right: -4px; top: 20px; gap: 10px; }
         .side-feature { font-size: 11px; }
         .side-feature .circle { width: 48px; height: 48px; }
@@ -529,14 +451,7 @@
         .copyright { text-align: left; }
       }
       @media (prefers-reduced-motion: reduce) {
-        .logo-ring,
-        .logo-mark::before,
-        .logo-mark::after,
-        .family-hero,
-        .learning-particles::before,
-        .learning-particles::after {
-          animation: none;
-        }
+        .logo-ring { animation: none; }
       }
     </style>
   </head>
@@ -565,7 +480,6 @@
 
         <div class="hero-art" aria-label="Família aprendendo com a Geni">
           <div class="hero-ring"></div>
-          <span class="learning-particles" aria-hidden="true"></span>
           <img class="family-hero" src="assets/home/tela-home.png" alt="Carol, Cauã e Geni estudando juntos" />
           <div class="side-icons">
             <div class="side-feature" style="--c:var(--purple)"><span class="circle"><svg viewBox="0 0 24 24"><path d="M7 18a4 4 0 0 1 0-8 5 5 0 0 1 10 0 4 4 0 0 1 0 8"/><path d="M8 15v-2"/><path d="M12 16v-4"/><path d="M16 15v-2"/></svg></span>Áudios</div>
