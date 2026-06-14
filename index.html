@@ -3,368 +3,512 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>NoSeuTempo — Aprender do seu jeito muda tudo</title>
-    <meta name="description" content="Plataforma de aprendizagem adaptativa e inclusiva. Cursos adaptados, Geni IA, jogos, áudio e vídeo para cada pessoa aprender no seu ritmo." />
-    <link rel="stylesheet" href="home-v3.css?v=4" />
+    <title>NoSeuTempo | Home pública</title>
+    <meta name="description" content="NoSeuTempo é uma plataforma de aprendizagem adaptativa com Geni IA, conteúdos acessíveis e jornadas personalizadas." />
+    <style>
+      :root {
+        --ink: #08194b;
+        --text: #243360;
+        --muted: #667096;
+        --line: #e4e8f5;
+        --panel: #ffffff;
+        --purple: #6b34df;
+        --purple-2: #934bff;
+        --blue: #248fdf;
+        --teal: #09a9a0;
+        --orange: #ff8a22;
+        --green: #15a86f;
+        --shadow: 0 18px 44px rgba(35, 45, 94, 0.09);
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        overflow-x: hidden;
+        color: var(--text);
+        background:
+          radial-gradient(circle at 18% 7%, rgba(35, 143, 223, 0.07), transparent 25%),
+          radial-gradient(circle at 82% 4%, rgba(107, 52, 223, 0.08), transparent 25%),
+          linear-gradient(180deg, #fff 0%, #fbfcff 55%, #fff 100%);
+        font-family: Inter, "Segoe UI", Arial, sans-serif;
+      }
+      a { color: inherit; text-decoration: none; }
+      img { display: block; max-width: 100%; }
+
+      .wrap { width: min(1280px, calc(100% - 96px)); margin: 0 auto; }
+
+      .header {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        min-height: 84px;
+        gap: 28px;
+      }
+      .brand img { width: 245px; }
+      .nav { display: flex; gap: 54px; justify-content: center; font-size: 14px; font-weight: 850; color: var(--ink); }
+      .nav a.active { color: var(--purple); }
+      .actions { display: flex; justify-content: flex-end; gap: 16px; }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        min-height: 48px;
+        padding: 0 28px;
+        border-radius: 10px;
+        border: 2px solid transparent;
+        font-size: 14px;
+        font-weight: 900;
+        white-space: nowrap;
+      }
+      .btn-primary { color: #fff; background: linear-gradient(135deg, #5d25d8, #7431e6); box-shadow: 0 14px 28px rgba(93, 37, 216, .18); }
+      .btn-outline { color: var(--purple); background: #fff; border-color: #875ff0; }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(390px, .82fr) minmax(560px, 1.18fr);
+        gap: 28px;
+        align-items: start;
+        padding: 46px 0 36px;
+      }
+      .badge {
+        display: inline-flex;
+        min-height: 32px;
+        align-items: center;
+        padding: 0 14px;
+        border-radius: 9px;
+        color: #6931d8;
+        background: #f0e9ff;
+        font-size: 13px;
+        font-weight: 950;
+        letter-spacing: .03em;
+        text-transform: uppercase;
+      }
+      .hero h1 {
+        margin: 20px 0 0;
+        color: var(--ink);
+        font-size: clamp(44px, 4.45vw, 64px);
+        line-height: 1.04;
+        letter-spacing: 0;
+      }
+      .hero h1 span { color: var(--teal); }
+      .heart {
+        display: inline-block;
+        width: 22px;
+        height: 22px;
+        margin-left: 8px;
+        border-radius: 7px 7px 2px 7px;
+        background: var(--orange);
+        transform: rotate(45deg);
+        vertical-align: 0.02em;
+      }
+      .heart::before, .heart::after {
+        position: absolute;
+        content: "";
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: var(--orange);
+      }
+      .heart::before { left: -11px; top: 0; }
+      .heart::after { left: 0; top: -11px; }
+      .hero p {
+        max-width: 530px;
+        margin: 28px 0 0;
+        color: var(--text);
+        font-size: 17px;
+        line-height: 1.65;
+      }
+      .hero-actions { display: flex; gap: 18px; margin-top: 34px; }
+      .safe-note {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        margin-top: 26px;
+        color: var(--text);
+        font-size: 13px;
+        font-weight: 850;
+      }
+      .safe-note svg { width: 22px; height: 22px; color: var(--purple); fill: none; stroke: currentColor; stroke-width: 2; }
+
+      .hero-art {
+        position: relative;
+        min-height: 560px;
+      }
+      .family-hero {
+        position: absolute;
+        left: -12px;
+        top: 28px;
+        z-index: 2;
+        width: 780px;
+        max-width: none;
+        filter: drop-shadow(0 24px 34px rgba(36, 42, 96, .12));
+      }
+      .hero-ring {
+        position: absolute;
+        z-index: 1;
+        right: 80px;
+        top: 38px;
+        width: 455px;
+        height: 455px;
+        border: 1px dashed rgba(107, 52, 223, .22);
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(126, 87, 226, .08), transparent 62%);
+      }
+      .side-icons {
+        position: absolute;
+        right: 0;
+        top: 22px;
+        z-index: 4;
+        display: grid;
+        gap: 18px;
+      }
+      .side-feature {
+        display: grid;
+        justify-items: center;
+        gap: 8px;
+        color: var(--c);
+        font-size: 14px;
+        font-weight: 900;
+      }
+      .side-feature .circle {
+        display: grid;
+        place-items: center;
+        width: 74px;
+        height: 74px;
+        border-radius: 50%;
+        color: #fff;
+        background: var(--c);
+        box-shadow: 0 15px 28px color-mix(in srgb, var(--c) 25%, transparent);
+      }
+      .side-feature svg { width: 36px; height: 36px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+      .value-strip {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        align-items: stretch;
+        margin-top: 22px;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: #fff;
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+      .value-item {
+        display: grid;
+        grid-template-columns: 54px 1fr;
+        gap: 14px;
+        align-items: center;
+        min-height: 118px;
+        padding: 24px 24px;
+        border-left: 1px solid var(--line);
+      }
+      .value-item:first-child { border-left: 0; }
+      .line-icon { width: 46px; height: 46px; color: var(--c); }
+      .line-icon svg, .feature-icon svg, .audience-icon svg, .journey-icon svg, .footer-social svg {
+        width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+      }
+      .value-item strong { display: block; color: var(--ink); font-size: 15px; line-height: 1.2; }
+      .value-item p { margin: 5px 0 0; color: var(--muted); font-size: 12px; line-height: 1.35; }
+
+      .section-title { margin: 44px 0 24px; text-align: center; }
+      .section-title h2 { margin: 0; color: var(--ink); font-size: 34px; line-height: 1.1; }
+      .section-title p { margin: 8px 0 0; color: var(--text); font-size: 15px; }
+
+      .journey-panel {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: #fff;
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+      .journey-step {
+        position: relative;
+        display: grid;
+        grid-template-columns: 68px 1fr;
+        gap: 16px;
+        min-height: 154px;
+        padding: 30px 24px;
+        border-left: 1px solid var(--line);
+        border-top: 1px solid var(--line);
+      }
+      .journey-step:nth-child(4n+1) { border-left: 0; }
+      .journey-step:nth-child(-n+4) { border-top: 0; }
+      .num {
+        position: absolute;
+        top: 24px;
+        left: 26px;
+        display: grid;
+        place-items: center;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        color: #fff;
+        background: var(--c);
+        font-weight: 950;
+      }
+      .journey-icon {
+        align-self: center;
+        width: 62px;
+        height: 62px;
+        margin-top: 26px;
+        padding: 12px;
+        border-radius: 18px;
+        color: var(--c);
+        background: color-mix(in srgb, var(--c) 11%, #fff);
+      }
+      .journey-step h3 { margin: 0; color: var(--ink); font-size: 15px; line-height: 1.25; }
+      .journey-step p { margin: 8px 0 0; color: var(--text); font-size: 12px; line-height: 1.45; }
+
+      .resource-grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 18px;
+      }
+      .resource-card, .audience-card {
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: #fff;
+        box-shadow: 0 12px 28px rgba(35, 45, 94, .06);
+      }
+      .resource-card {
+        min-height: 250px;
+        padding: 28px 20px;
+      }
+      .feature-icon {
+        display: grid;
+        place-items: center;
+        width: 58px;
+        height: 58px;
+        border-radius: 18px;
+        color: var(--c);
+        background: color-mix(in srgb, var(--c) 10%, #fff);
+      }
+      .resource-card h3 { margin: 24px 0 0; color: var(--ink); font-size: 18px; line-height: 1.18; }
+      .resource-card p { margin: 12px 0 0; color: var(--text); font-size: 13px; line-height: 1.5; }
+
+      .audience-grid {
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        gap: 12px;
+      }
+      .audience-card {
+        display: grid;
+        place-items: center;
+        gap: 10px;
+        min-height: 132px;
+        padding: 16px 8px;
+        color: var(--ink);
+        text-align: center;
+        font-size: 13px;
+        font-weight: 900;
+      }
+      .audience-icon { width: 48px; height: 48px; color: var(--c); }
+
+      .origin {
+        display: grid;
+        grid-template-columns: 230px 1fr auto;
+        gap: 34px;
+        align-items: center;
+        margin-top: 44px;
+        padding: 0 36px 0 0;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: linear-gradient(90deg, #fff, #fbf7ff);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+      .origin img { width: 230px; height: 128px; object-fit: cover; object-position: center; }
+      .origin strong { display: block; color: var(--ink); font-size: 21px; }
+      .origin p { max-width: 660px; margin: 8px 0 0; color: var(--text); font-size: 15px; line-height: 1.5; }
+
+      .cta {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 26px;
+        margin-top: 30px;
+        padding: 42px 60px;
+        border-radius: 20px;
+        color: #fff;
+        background:
+          radial-gradient(circle at 82% 30%, rgba(255,255,255,.18), transparent 24%),
+          linear-gradient(120deg, #6321d8 0%, #7e36e2 42%, #08a9a0 100%);
+        box-shadow: 0 20px 42px rgba(81, 54, 188, .22);
+      }
+      .cta h2 { margin: 0; font-size: 32px; line-height: 1.12; }
+      .cta p { margin: 10px 0 0; font-size: 16px; line-height: 1.5; color: rgba(255,255,255,.92); }
+      .cta .btn { color: var(--purple); background: #fff; border-color: #fff; min-width: 220px; }
+
+      .footer {
+        display: grid;
+        grid-template-columns: 1.3fr repeat(4, 1fr);
+        gap: 48px;
+        padding: 44px 28px 18px;
+      }
+      .footer img { width: 220px; }
+      .footer small { display: block; max-width: 240px; margin-top: 10px; color: var(--text); font-size: 13px; line-height: 1.45; }
+      .footer h3 { margin: 0 0 14px; color: var(--ink); font-size: 13px; text-transform: uppercase; }
+      .footer a, .footer span { display: block; margin-top: 10px; color: var(--text); font-size: 13px; }
+      .socials { display: flex; gap: 10px; margin-top: 14px; }
+      .footer-social { display: grid !important; place-items: center; width: 28px; height: 28px; color: #7b859f; }
+      .copyright { grid-column: 1 / -1; color: var(--muted); text-align: center; font-size: 12px; }
+
+      @media (max-width: 1120px) {
+        .wrap { width: min(920px, calc(100% - 44px)); }
+        .hero { grid-template-columns: 1fr; }
+        .hero-art { min-height: 560px; }
+        .value-strip { grid-template-columns: repeat(2, 1fr); }
+        .value-item:nth-child(odd) { border-left: 0; }
+        .journey-panel { grid-template-columns: repeat(2, 1fr); }
+        .journey-step:nth-child(4n+1) { border-left: 1px solid var(--line); }
+        .journey-step:nth-child(2n+1) { border-left: 0; }
+        .journey-step:nth-child(-n+4) { border-top: 1px solid var(--line); }
+        .journey-step:nth-child(-n+2) { border-top: 0; }
+        .resource-grid { grid-template-columns: repeat(3, 1fr); }
+        .audience-grid { grid-template-columns: repeat(5, 1fr); }
+        .origin { grid-template-columns: 220px 1fr; padding-right: 24px; }
+        .origin .btn { grid-column: 2; justify-self: start; margin-bottom: 22px; }
+        .footer { grid-template-columns: repeat(2, 1fr); }
+      }
+
+      @media (max-width: 680px) {
+        .wrap { width: min(350px, calc(100% - 36px)); }
+        .header { grid-template-columns: 1fr auto; min-height: 78px; }
+        .brand img { width: 205px; }
+        .nav { display: none; }
+        .actions .btn-outline { display: none; }
+        .actions .btn { min-height: 42px; padding: 0 16px; }
+        .hero { padding: 28px 0 34px; }
+        .hero h1 { font-size: 40px; }
+        .hero p { font-size: 16px; line-height: 1.58; }
+        .hero-actions { flex-direction: column; }
+        .hero-actions .btn { width: 100%; }
+        .hero-art { min-height: 600px; }
+        .family-hero { left: -20px; right: auto; bottom: 28px; width: 420px; max-width: none; }
+        .hero-ring { top: 80px; right: -70px; width: 330px; height: 330px; }
+        .side-icons { right: -4px; top: 20px; gap: 10px; }
+        .side-feature { font-size: 11px; }
+        .side-feature .circle { width: 48px; height: 48px; }
+        .side-feature svg { width: 24px; height: 24px; }
+        .value-strip, .journey-panel, .resource-grid, .audience-grid, .origin, .cta, .footer { grid-template-columns: 1fr; }
+        .value-item, .value-item:first-child { border-left: 0; border-top: 1px solid var(--line); }
+        .value-item:first-child { border-top: 0; }
+        .journey-step, .journey-step:nth-child(2n+1) { border-left: 0; }
+        .journey-step:nth-child(-n+2) { border-top: 1px solid var(--line); }
+        .journey-step:first-child { border-top: 0; }
+        .origin { padding: 0 0 24px; }
+        .origin img { width: 100%; height: 170px; }
+        .origin div { padding: 0 22px; }
+        .origin .btn { grid-column: auto; margin: 0 22px; }
+        .cta { padding: 30px 24px; }
+        .cta .btn { width: 100%; min-width: 0; }
+        .copyright { text-align: left; }
+      }
+    </style>
   </head>
   <body>
-    <header class="site-header">
-      <a class="brand" href="index.html" aria-label="NoSeuTempo">
-        <img src="assets/home/logo.png?v=2" alt="NoSeuTempo" />
-      </a>
-
-      <nav class="main-nav" aria-label="Navegação principal">
-        <a href="#inicio">Início</a>
-        <a href="sobrenos.html">Sobre nós</a>
-      </nav>
-
-      <a class="button button-primary" href="plataforma.html">Acessar plataforma <span aria-hidden="true">→</span></a>
+    <header class="header wrap">
+      <a class="brand" href="index.html" aria-label="NoSeuTempo"><img src="assets/home/logo.png?v=2" alt="NoSeuTempo" /></a>
+      <nav class="nav" aria-label="Navegação principal"><a class="active" href="#inicio">Início</a><a href="sobrenos.html">Sobre nós</a></nav>
+      <div class="actions"><a class="btn btn-outline" href="plataforma.html">Entrar</a><a class="btn btn-primary" href="plataforma.html">Criar conta</a></div>
     </header>
 
-    <main id="inicio">
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <h1 id="hero-title">Aprender do <span>seu jeito</span> muda tudo.</h1>
-          <p>
-            Cursos adaptados, inteligência artificial, atividades, jogos educativos,
-            áudio, vídeo e diferentes formas de ensinar para que cada pessoa encontre
-            o caminho que funciona melhor para aprender.
-          </p>
-
-          <div class="hero-actions">
-            <a class="button button-primary" href="plataforma.html">Acessar plataforma <span aria-hidden="true">→</span></a>
-            <a class="button button-secondary" href="#jornada">Conheça o método</a>
-          </div>
-        </div>
-
-        <div class="hero-visual" aria-label="Geni IA acompanhando a jornada de aprendizagem">
-          <img src="assets/home/geni-tela-inicial.png" alt="Geni IA com notebook" />
-        </div>
-
-        <aside class="geni-card" aria-labelledby="geni-title">
-          <h2 id="geni-title">Geni IA <span aria-hidden="true">✦</span></h2>
-          <p>Conversa, orienta e acompanha o aluno durante toda a jornada.</p>
-          <ul>
-            <li><span>⌾</span> Conversa por texto</li>
-            <li><span>◉</span> Conversa por áudio</li>
-            <li><span>▣</span> Conversa por vídeo</li>
-            <li><span>?</span> Tira dúvidas</li>
-            <li><span>≈</span> Explica de outro jeito</li>
-            <li><span>△</span> Dá exemplos diferentes</li>
-            <li><span>9</span> Apoia quando travar</li>
-          </ul>
-        </aside>
-      </section>
-
-      <section class="belief-strip" aria-label="Princípios do NoSeuTempo">
-        <div class="heart-icon" aria-hidden="true">♡</div>
+    <main id="inicio" class="wrap">
+      <section class="hero">
         <div>
-          <strong>Uma plataforma criada por uma mãe neurodivergente e seu filho neurodivergente.</strong>
-          <p>Pensada, testada e feita com empatia para atender diferentes formas de aprender.</p>
+          <span class="badge">Plataforma de aprendizagem adaptativa</span>
+          <h1>Cada mente<br />tem seu ritmo.<br /><span>Aqui, seu tempo<br />é o mais importante.<i class="heart" aria-hidden="true"></i></span></h1>
+          <p>NoSeuTempo é uma plataforma de aprendizagem personalizada e adaptativa com Geni IA. Conteúdos acessíveis, multiformato e centrados na pessoa, para diferentes formas de aprender.</p>
+          <div class="hero-actions"><a class="btn btn-primary" href="plataforma.html">Criar conta <span aria-hidden="true">→</span></a><a class="btn btn-outline" href="#jornada">▶ Ver como funciona</a></div>
+          <div class="safe-note"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v6c0 4.8-3.2 7.4-8 8-4.8-.6-8-3.2-8-8V7l8-4z"/><path d="M9 12l2 2 4-4"/></svg>Ambiente seguro, inclusivo e sem julgamentos.</div>
         </div>
-        <div class="belief-divider" aria-hidden="true"></div>
-        <p>
-          Design acessível, cores que não cansam os olhos, fontes legíveis, tamanho de
-          fonte ajustável e experiência pensada para o conforto e a inclusão.
-        </p>
-      </section>
 
-      <section class="feature-grid" aria-label="Destaques da plataforma">
-        <article class="feature-card">
-          <div class="feature-icon person-icon" aria-hidden="true"></div>
-          <div>
-            <h2>Aprendizagem Personalizada</h2>
-            <p>Conteúdos adaptados ao ritmo, perfil, interesses e necessidades de cada aluno.</p>
-          </div>
-        </article>
-
-        <article class="feature-card">
-          <div class="feature-icon robot-icon" aria-hidden="true">
-            <img src="assets/home/geni-hero.png" alt="" />
-          </div>
-          <div>
-            <h2>Geni IA</h2>
-            <p>Converse por texto, áudio ou vídeo e receba apoio durante toda a sua jornada de aprendizagem.</p>
-          </div>
-        </article>
-
-        <article class="feature-card">
-          <div class="feature-icon play-icon" aria-hidden="true"></div>
-          <div>
-            <h2>Experiência Multiformato</h2>
-            <p>Vídeos, leitura, áudio, atividades e jogos trabalhando juntos para reforçar a aprendizagem.</p>
-          </div>
-        </article>
-      </section>
-
-      <section class="journey" id="jornada" aria-labelledby="journey-title">
-        <h2 id="journey-title">Como funciona a jornada</h2>
-        <p class="journey-subtitle">Uma experiência personalizada que acompanha cada pessoa do início ao desenvolvimento.</p>
-        <div class="journey-grid">
-          <article class="journey-step teal">
-            <span>1</span>
-            <span class="journey-icon" aria-hidden="true">
-              <svg viewBox="0 0 64 64">
-                <circle cx="30" cy="22" r="11"></circle>
-                <path d="M11 55c2.2-12.5 10-20 19-20 6.2 0 11.8 3.6 15.3 9.8"></path>
-                <path d="M48 54s-9-5.4-9-12a6.1 6.1 0 0 1 10.8-3.8A6.1 6.1 0 0 1 60 42c0 6.6-12 12-12 12z"></path>
-              </svg>
-            </span>
-            <h3>Conhecendo melhor você</h3>
-            <p>Iremos mapear seu perfil, preferências, objetivos, hiperfoco e aspectos emocionais.</p>
-          </article>
-          <article class="journey-step teal">
-            <span>2</span>
-            <span class="journey-icon" aria-hidden="true">
-              <svg viewBox="0 0 64 64">
-                <path d="M14 17h30l8 8-8 8H14l-8-8 8-8z"></path>
-                <path d="M43 35H20l-8 8 8 8h30"></path>
-                <path d="M32 11v42"></path>
-              </svg>
-            </span>
-            <h3>Escolha da jornada</h3>
-            <p>Escolha entre cursos NoSeuTempo ou envie conteúdos externos para adaptar.</p>
-          </article>
-          <article class="journey-step blue">
-            <span>3</span>
-            <span class="journey-icon" aria-hidden="true">
-              <svg viewBox="0 0 64 64">
-                <path d="M18 8h22l10 10v38H18z"></path>
-                <path d="M40 8v12h10"></path>
-                <path d="M25 31h18"></path>
-                <path d="M25 42h18"></path>
-              </svg>
-            </span>
-            <h3>Conteúdo adaptado</h3>
-            <p>Texto simplificado, áudio, vídeo, atividades de múltipla escolha e jogos educativos.</p>
-          </article>
-          <article class="journey-step indigo">
-            <span>4</span>
-            <span class="journey-icon" aria-hidden="true">
-              <svg viewBox="0 0 64 64">
-                <path d="M17 29c-4 1-7 5.4-8 12.7-1 7.8 2.2 11.6 6.4 8.2l7.2-5.9h18.8l7.2 5.9c4.2 3.4 7.4-.4 6.4-8.2C54 34.4 51 30 47 29c-9-2-21-2-30 0z"></path>
-                <path d="M22 35v10"></path>
-                <path d="M17 40h10"></path>
-                <circle cx="43" cy="38" r="1.8"></circle>
-                <circle cx="49" cy="43" r="1.8"></circle>
-              </svg>
-            </span>
-            <h3>Jogos educativos</h3>
-            <p>Jogos que estimulam atenção, memória, leitura, raciocínio e motivação.</p>
-          </article>
-          <article class="journey-step violet">
-            <span>5</span>
-            <span class="journey-icon" aria-hidden="true">
-              <svg viewBox="0 0 64 64">
-                <path d="M32 10v8"></path>
-                <circle cx="32" cy="8" r="4"></circle>
-                <rect x="14" y="21" width="36" height="29" rx="10"></rect>
-                <path d="M10 33v9"></path>
-                <path d="M54 33v9"></path>
-                <circle cx="25" cy="35" r="2.5"></circle>
-                <circle cx="39" cy="35" r="2.5"></circle>
-                <path d="M27 43c2.8 2.4 7.2 2.4 10 0"></path>
-              </svg>
-            </span>
-            <h3>Interação com a Geni</h3>
-            <p>Converse por texto, áudio, tire dúvidas, peça exemplos e receba apoio sempre.</p>
-          </article>
-          <article class="journey-step magenta">
-            <span>6</span>
-            <span class="journey-icon" aria-hidden="true">
-              <svg viewBox="0 0 64 64">
-                <path d="M10 18h31a6 6 0 0 1 6 6v18a6 6 0 0 1-6 6H21l-11 8V24a6 6 0 0 1 6-6z"></path>
-                <path d="M47 29l9-6v20l-9-6"></path>
-                <path d="M22 33h.1"></path>
-                <path d="M31 33h.1"></path>
-                <path d="M40 33h.1"></path>
-              </svg>
-            </span>
-            <h3>Conversas que te fazem evoluir</h3>
-            <p>Converse por vídeo quando estiver pronto para avaliar e identificar pontos de melhoria.</p>
-          </article>
-          <article class="journey-step orange">
-            <span>7</span>
-            <span class="journey-icon" aria-hidden="true">
-              <svg viewBox="0 0 64 64">
-                <path d="M32 53C21.5 45.2 10 36.1 10 24.4A11.2 11.2 0 0 1 32 20a11.2 11.2 0 0 1 22 4.4C54 36.1 42.5 45.2 32 53z"></path>
-              </svg>
-            </span>
-            <h3>Desenvolvimento emocional</h3>
-            <p>A plataforma considera seus sentimentos e acompanha sua motivação, confiança e engajamento.</p>
-          </article>
-          <article class="journey-step amber">
-            <span>8</span>
-            <span class="journey-icon" aria-hidden="true">
-              <svg viewBox="0 0 64 64">
-                <path d="M12 52h40"></path>
-                <path d="M17 52V38h8v14"></path>
-                <path d="M30 52V29h8v23"></path>
-                <path d="M43 52V20h8v32"></path>
-                <path d="M43 12l12 6-12 6z"></path>
-              </svg>
-            </span>
-            <h3>Evolução no seu ritmo</h3>
-            <p>Não existe pressão por velocidade. O foco está na evolução contínua e real.</p>
-          </article>
-          <article class="journey-step green">
-            <span>9</span>
-            <span class="journey-icon" aria-hidden="true">
-              <svg viewBox="0 0 64 64">
-                <path d="M16 8h27l9 9v39H16z"></path>
-                <path d="M43 8v11h9"></path>
-                <path d="M24 42V30"></path>
-                <path d="M32 42V36"></path>
-                <path d="M40 42V27"></path>
-                <path d="M24 48h20"></path>
-                <path d="M24 20h10"></path>
-              </svg>
-            </span>
-            <h3>Relatórios de evolução</h3>
-            <p>Geramos relatórios mensais com seus avanços, conquistas e pontos a melhorar.</p>
-          </article>
-        </div>
-        <div class="journey-note">
-          <span aria-hidden="true">✦</span>
-          <div>
-            <strong>Acompanhamos sua jornada de perto</strong>
-            <p>Relatórios claros e completos para você e para quem te acompanha.</p>
+        <div class="hero-art" aria-label="Família aprendendo com a Geni">
+          <div class="hero-ring"></div>
+          <img class="family-hero" src="assets/home/tela-home.png" alt="Carol, Cauã e Geni estudando juntos" />
+          <div class="side-icons">
+            <div class="side-feature" style="--c:var(--purple)"><span class="circle"><svg viewBox="0 0 24 24"><path d="M7 18a4 4 0 0 1 0-8 5 5 0 0 1 10 0 4 4 0 0 1 0 8"/><path d="M8 15v-2"/><path d="M12 16v-4"/><path d="M16 15v-2"/></svg></span>Áudios</div>
+            <div class="side-feature" style="--c:var(--orange)"><span class="circle"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>Vídeos</div>
+            <div class="side-feature" style="--c:var(--teal)"><span class="circle"><svg viewBox="0 0 24 24"><path d="M6 12h4"/><path d="M8 10v4"/><path d="M15 12h.01"/><path d="M18 10h.01"/><path d="M17 16l3 2 1-8a5 5 0 0 0-5-6H8a5 5 0 0 0-5 6l1 8 3-2z"/></svg></span>Jogos</div>
+            <div class="side-feature" style="--c:var(--blue)"><span class="circle"><svg viewBox="0 0 24 24"><path d="M4 5.5A3.5 3.5 0 0 1 7.5 2H20v18H7.5A3.5 3.5 0 0 0 4 23z"/><path d="M4 5.5v17"/><path d="M8 7h8"/><path d="M8 11h7"/></svg></span>Leitura</div>
+            <div class="side-feature" style="--c:var(--orange)"><span class="circle"><svg viewBox="0 0 24 24"><path d="M4 19V5"/><path d="M8 19v-8"/><path d="M12 19V8"/><path d="M16 19v-5"/><path d="M20 19V4"/></svg></span>Evolução</div>
           </div>
         </div>
       </section>
 
-      <section class="story story-2col" id="historia" aria-label="História e diferenciais">
-        <div class="story-left">
-          <div class="story-photo">
-            <img src="assets/home/familia-geni-notebook-hero-v2.png" alt="Família neurodivergente aprendendo com a Geni IA" />
-          </div>
-          <div class="story-copy">
-            <h2>A tecnologia que faltava para a nossa família. E para a sua.</h2>
-            <p>O NoSeuTempo nasceu da história de uma família neurodivergente que enfrentou, na prática, os desafios de um sistema de ensino que não se adaptava a eles.</p>
-            <p>Nós sabemos que a inclusão vai muito além do discurso. Por isso, cada detalhe desta plataforma foi exaustivamente testado e pensado para o conforto cognitivo: desde o nível de contraste das cores e o tamanho ajustável das fontes, até a criação de múltiplos formatos de aprendizado (áudio, texto, vídeo e jogos).</p>
-            <p>É a união do carinho de quem entende essa necessidade dentro de casa, com o rigor técnico para criar um ambiente onde todos possam aprender. Sem pressão. No seu tempo.</p>
-          </div>
-        </div>
+      <section class="value-strip" aria-label="Diferenciais">
+        <article class="value-item" style="--c:var(--purple)"><span class="line-icon"><svg viewBox="0 0 24 24"><path d="M9 3a4 4 0 0 0-4 4v2a4 4 0 0 0 0 8v1a3 3 0 0 0 6 0V7a4 4 0 0 0-2-4z"/><path d="M15 3a4 4 0 0 1 4 4v2a4 4 0 0 1 0 8v1a3 3 0 0 1-6 0V7a4 4 0 0 1 2-4z"/></svg></span><div><strong>Aprendizagem personalizada</strong><p>Caminhos únicos para cada mente.</p></div></article>
+        <article class="value-item" style="--c:var(--purple)"><span class="line-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 11h.01"/><path d="M16 11h.01"/><path d="M8 15c2.5 1.8 5.5 1.8 8 0"/></svg></span><div><strong>Respeito ao seu tempo</strong><p>A pessoa aprende no seu ritmo.</p></div></article>
+        <article class="value-item" style="--c:var(--purple)"><span class="line-icon"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-9-9a5.4 5.4 0 0 1 9-5 5.4 5.4 0 0 1 9 5c-2 4.6-9 9-9 9z"/></svg></span><div><strong>Inclusão de verdade</strong><p>Para diferentes formas de aprender.</p></div></article>
+        <article class="value-item" style="--c:var(--purple)"><span class="line-icon"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v6c0 4.8-3.2 7.4-8 8-4.8-.6-8-3.2-8-8V7l8-4z"/><path d="M9 12l2 2 4-4"/></svg></span><div><strong>Ambiente seguro e acolhedor</strong><p>Sem julgamentos, sempre com apoio.</p></div></article>
+        <article class="value-item" style="--c:var(--purple)"><span class="line-icon"><svg viewBox="0 0 24 24"><path d="M4 19V5"/><path d="M8 19v-8"/><path d="M12 19V8"/><path d="M16 19v-5"/><path d="M20 19V4"/></svg></span><div><strong>Evolução com sentido</strong><p>Acompanhamento que valoriza conquistas.</p></div></article>
+      </section>
 
-        <div class="difference">
-          <h2>Por que o NoSeuTempo é diferente?</h2>
-          <div class="diff-grid">
-            <article class="diff-item">
-              <span class="diff-icon ic-blue">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
-              </span>
-              <strong>Design inclusivo</strong>
-              <p>Cores, fontes, contrastes e navegação pensados para diferentes perfis cognitivos.</p>
-            </article>
-
-            <article class="diff-item">
-              <span class="diff-icon ic-purple">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="4.6" r="1.7"/><path d="M5.5 8.6c2 .9 4.3 1.3 6.5 1.3s4.5-.4 6.5-1.3"/><path d="M12 9.9V15"/><path d="M12 15l-2.6 5.2"/><path d="M12 15l2.6 5.2"/></svg>
-              </span>
-              <strong>Acessibilidade</strong>
-              <p>Recursos que tornam o aprendizado mais acessível e confortável para todos.</p>
-            </article>
-
-            <article class="diff-item">
-              <span class="diff-icon ic-green">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 3v5.6L5.3 16.8a2 2 0 0 0 1.8 3h9.8a2 2 0 0 0 1.8-3L14.5 8.6V3"/><path d="M8.5 3h7"/><path d="M7.6 14.5h8.8"/></svg>
-              </span>
-              <strong>Baseado em ciência</strong>
-              <p>Estratégias validadas por estudos e práticas reais de aprendizagem.</p>
-            </article>
-
-            <article class="diff-item">
-              <span class="diff-icon ic-orange">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5C8 17.5 3.5 14 3.5 9.3A4.2 4.2 0 0 1 12 7a4.2 4.2 0 0 1 8.5 2.3c0 4.7-4.5 8.2-8.5 11.2z"/></svg>
-              </span>
-              <strong>Respeito às diferenças</strong>
-              <p>Porque cada mente é única e merece ser compreendida.</p>
-            </article>
-
-            <article class="diff-item">
-              <span class="diff-icon ic-blue">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7.5 2.8v5.2c0 4.8-3.2 7.6-7.5 9-4.3-1.4-7.5-4.2-7.5-9V5.8L12 3z"/><path d="M9 12l2 2 4-4.2"/></svg>
-              </span>
-              <strong>Privacidade e segurança</strong>
-              <p>Seus dados protegidos com responsabilidade e transparência.</p>
-            </article>
-
-            <article class="diff-item">
-              <span class="diff-icon ic-purple">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-6.5 8 6.5"/><path d="M6 9.7V20h12V9.7"/><path d="M12 17.2s-2.5-1.4-2.5-3.2A1.55 1.55 0 0 1 12 12.6a1.55 1.55 0 0 1 2.5 1.4c0 1.8-2.5 3.2-2.5 3.2z"/></svg>
-              </span>
-              <strong>Ambiente acolhedor</strong>
-              <p>Um espaço seguro para aprender, errar, tentar e evoluir.</p>
-            </article>
-          </div>
+      <section id="jornada">
+        <div class="section-title"><h2>Como funciona a jornada</h2><p>Uma experiência completa, adaptada e centrada em você.</p></div>
+        <div class="journey-panel">
+          <article class="journey-step" style="--c:var(--purple)"><span class="num">1</span><span class="journey-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M5 21c1.2-5 3.7-8 7-8s5.8 3 7 8"/></svg></span><div><h3>Conhecendo melhor você</h3><p>Perfil, preferências, objetivos, hiperfoco e aspectos emocionais.</p></div></article>
+          <article class="journey-step" style="--c:var(--blue)"><span class="num">2</span><span class="journey-icon"><svg viewBox="0 0 24 24"><path d="M4 19V5l8-3 8 3v14l-8-3z"/><path d="M12 2v14"/></svg></span><div><h3>Escolha da jornada</h3><p>Cursos do NoSeuTempo ou conteúdos externos adaptados.</p></div></article>
+          <article class="journey-step" style="--c:var(--teal)"><span class="num">3</span><span class="journey-icon"><svg viewBox="0 0 24 24"><path d="M6 3h9l3 3v15H6z"/><path d="M15 3v4h4"/><path d="M9 12h6"/><path d="M9 16h6"/></svg></span><div><h3>Conteúdo adaptado</h3><p>Texto simplificado, áudio, vídeo, exemplos e formas diferentes de explicar.</p></div></article>
+          <article class="journey-step" style="--c:var(--orange)"><span class="num">4</span><span class="journey-icon"><svg viewBox="0 0 24 24"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"/></svg></span><div><h3>Atividades e jogos</h3><p>Exercícios interativos e jogos educativos para reforçar.</p></div></article>
+          <article class="journey-step" style="--c:var(--purple)"><span class="num">5</span><span class="journey-icon"><svg viewBox="0 0 24 24"><path d="M12 3v3"/><rect x="5" y="7" width="14" height="11" rx="4"/><path d="M2 12h3"/><path d="M19 12h3"/><path d="M9 12h.01"/><path d="M15 12h.01"/></svg></span><div><h3>Interação com a Geni</h3><p>Conversa por texto, áudio e apoio durante a jornada.</p></div></article>
+          <article class="journey-step" style="--c:var(--blue)"><span class="num">6</span><span class="journey-icon"><svg viewBox="0 0 24 24"><path d="M4 5h12v14H4z"/><path d="M16 9l5-3v12l-5-3z"/></svg></span><div><h3>Conversas que te fazem evoluir</h3><p>Opção de conversar por vídeo quando você se sentir pronto(a).</p></div></article>
+          <article class="journey-step" style="--c:var(--teal)"><span class="num">7</span><span class="journey-icon"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-10-10a5.5 5.5 0 0 1 10-5 5.5 5.5 0 0 1 10 5c-2 5-10 10-10 10z"/></svg></span><div><h3>Desenvolvimento emocional</h3><p>Acolhimento, confiança, motivação e engajamento.</p></div></article>
+          <article class="journey-step" style="--c:var(--orange)"><span class="num">8</span><span class="journey-icon"><svg viewBox="0 0 24 24"><path d="M4 19V5"/><path d="M8 19v-8"/><path d="M12 19V8"/><path d="M16 19v-5"/><path d="M20 19V4"/></svg></span><div><h3>Relatórios de evolução</h3><p>Acompanhamento de avanços, conquistas e próximos passos.</p></div></article>
         </div>
       </section>
 
-      <section class="empathy-list" aria-labelledby="empathy-title">
-        <div class="empathy-heading">
-          <h2 id="empathy-title">Pensando em pessoas como você que nosso curso foi feito.</h2>
-          <p>
-            Para quem aprende, acompanha, ensina ou acolhe. Uma lista feita com cuidado
-            para lembrar que cada pessoa tem um jeito próprio de evoluir.
-          </p>
-        </div>
-
-        <div class="empathy-grid persona-grid">
-          <article class="empathy-card blue">
-            <img class="persona-img" src="assets/personas/criancas.png" alt="" loading="lazy" />
-            <strong>Crianças</strong>
-          </article>
-          <article class="empathy-card purple">
-            <img class="persona-img" src="assets/personas/adolescentes.png" alt="" loading="lazy" />
-            <strong>Adolescentes</strong>
-          </article>
-          <article class="empathy-card teal">
-            <img class="persona-img" src="assets/personas/adultos-profissionais.png" alt="" loading="lazy" />
-            <strong>Adultos e Profissionais</strong>
-          </article>
-          <article class="empathy-card blue">
-            <img class="persona-img" src="assets/personas/pais-responsaveis.png" alt="" loading="lazy" />
-            <strong>Pais e Responsáveis</strong>
-          </article>
-          <article class="empathy-card orange">
-            <img class="persona-img" src="assets/personas/familias.png" alt="" loading="lazy" />
-            <strong>Famílias</strong>
-          </article>
-          <article class="empathy-card purple">
-            <img class="persona-img" src="assets/personas/professores.png" alt="" loading="lazy" />
-            <strong>Professores</strong>
-          </article>
-          <article class="empathy-card teal">
-            <img class="persona-img" src="assets/personas/clinicas.png" alt="" loading="lazy" />
-            <strong>Clínicas</strong>
-          </article>
-          <article class="empathy-card orange">
-            <img class="persona-img" src="assets/personas/escolas.png" alt="" loading="lazy" />
-            <strong>Escolas</strong>
-          </article>
-          <article class="empathy-card blue">
-            <img class="persona-img" src="assets/personas/faculdades.png" alt="" loading="lazy" />
-            <strong>Faculdades</strong>
-          </article>
-          <article class="empathy-card purple">
-            <img class="persona-img" src="assets/personas/empresas.png" alt="" loading="lazy" />
-            <strong>Empresas</strong>
-          </article>
-          <article class="empathy-card teal">
-            <img class="persona-img" src="assets/personas/cursos-online.png" alt="" loading="lazy" />
-            <strong>Cursos Online</strong>
-          </article>
-          <article class="empathy-card teal">
-            <img class="persona-img" src="assets/personas/cursos.png" alt="" loading="lazy" />
-            <strong>Cursos</strong>
-          </article>
+      <section>
+        <div class="section-title"><h2>Tudo que ajuda você a aprender melhor</h2><p>Recursos inteligentes que se adaptam a você.</p></div>
+        <div class="resource-grid">
+          <article class="resource-card" style="--c:var(--purple)"><span class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M5 21c1.2-5 3.7-8 7-8s5.8 3 7 8"/></svg></span><h3>Aprendizagem personalizada</h3><p>Planos únicos de estudo criados a partir do seu perfil.</p></article>
+          <article class="resource-card" style="--c:var(--orange)"><span class="feature-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/><circle cx="12" cy="12" r="10"/></svg></span><h3>Experiência multiformato</h3><p>Leitura, vídeo, áudio, atividades e jogos do jeito que faz sentido.</p></article>
+          <article class="resource-card" style="--c:var(--purple)"><span class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 3v3"/><rect x="5" y="7" width="14" height="11" rx="4"/><path d="M9 12h.01"/><path d="M15 12h.01"/></svg></span><h3>Geni IA</h3><p>Inteligência artificial acolhedora que conversa, orienta e apoia.</p></article>
+          <article class="resource-card" style="--c:var(--blue)"><span class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="4" r="2"/><path d="M4 9h16"/><path d="M12 9v12"/><path d="M8 21l4-8 4 8"/></svg></span><h3>Acessibilidade real</h3><p>Design inclusivo, leitura facilitada e recursos para diferentes necessidades.</p></article>
+          <article class="resource-card" style="--c:var(--teal)"><span class="feature-icon"><svg viewBox="0 0 24 24"><path d="M6 3h9l3 3v15H6z"/><path d="M15 3v4h4"/><path d="M9 12h6"/></svg></span><h3>Conteúdo adaptado</h3><p>Cursos já adaptados e adaptação de conteúdos externos.</p></article>
+          <article class="resource-card" style="--c:var(--orange)"><span class="feature-icon"><svg viewBox="0 0 24 24"><path d="M4 19V5"/><path d="M8 19v-8"/><path d="M12 19V8"/><path d="M16 19v-5"/><path d="M20 19V4"/></svg></span><h3>Evolução acompanhada</h3><p>Relatórios simples e claros para celebrar conquistas.</p></article>
         </div>
       </section>
 
-      <footer class="closing-strip">
-        <strong>Aqui, cada pessoa aprende do seu jeito. No seu tempo.</strong>
-        <span>Inclusão que respeita. Tecnologia que transforma.</span>
-      </footer>
+      <section>
+        <div class="section-title"><h2>Para quem é o NoSeuTempo</h2><p>Uma plataforma para diferentes pessoas, contextos e objetivos.</p></div>
+        <div class="audience-grid">
+          <div class="audience-card" style="--c:var(--orange)"><span class="audience-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 10h.01"/><path d="M16 10h.01"/><path d="M8 15c2.5 2 5.5 2 8 0"/></svg></span>Crianças</div>
+          <div class="audience-card" style="--c:var(--purple)"><span class="audience-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M5 21c1.2-5 3.7-8 7-8s5.8 3 7 8"/></svg></span>Adolescentes</div>
+          <div class="audience-card" style="--c:var(--blue)"><span class="audience-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M5 21c1.2-5 3.7-8 7-8s5.8 3 7 8"/></svg></span>Adultos</div>
+          <div class="audience-card" style="--c:var(--purple)"><span class="audience-icon"><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M3 20c.8-4 2.8-6 5-6s4.2 2 5 6"/><path d="M11 20c.8-4 2.8-6 5-6s4.2 2 5 6"/></svg></span>Famílias</div>
+          <div class="audience-card" style="--c:var(--purple)"><span class="audience-icon"><svg viewBox="0 0 24 24"><path d="M4 8l8-4 8 4-8 4z"/><path d="M6 10v5c2 2 10 2 12 0v-5"/></svg></span>Professores</div>
+          <div class="audience-card" style="--c:var(--blue)"><span class="audience-icon"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4-9-8.5A5 5 0 0 1 12 7a5 5 0 0 1 9 5.5C19 17 12 21 12 21z"/><path d="M12 10v5"/><path d="M9.5 12.5h5"/></svg></span>Clínicas</div>
+          <div class="audience-card" style="--c:var(--purple)"><span class="audience-icon"><svg viewBox="0 0 24 24"><path d="M4 21V8l8-4 8 4v13"/><path d="M9 21v-6h6v6"/></svg></span>Escolas</div>
+          <div class="audience-card" style="--c:var(--purple)"><span class="audience-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V10l7-5 7 5v11"/></svg></span>Faculdades</div>
+          <div class="audience-card" style="--c:var(--purple)"><span class="audience-icon"><svg viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V5h6v2"/><path d="M4 12h16"/></svg></span>Empresas</div>
+          <div class="audience-card" style="--c:var(--purple)"><span class="audience-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/><path d="M10 9l5 3-5 3z"/></svg></span>Cursos online</div>
+        </div>
+      </section>
+
+      <section class="origin">
+        <img src="assets/home/tela-home.png" alt="Carol, Cauã e Geni" />
+        <div><strong>Criado a partir de uma vivência real.</strong><p>O NoSeuTempo nasceu da experiência de Carol e seu filho Cauã para transformar desafios de aprendizagem em caminhos possíveis.</p></div>
+        <a class="btn btn-outline" href="sobrenos.html">Sobre nós <span aria-hidden="true">→</span></a>
+      </section>
+
+      <section class="cta">
+        <div><h2>Pronto para aprender do seu jeito?</h2><p>Comece agora uma jornada com acolhimento, autonomia e apoio em cada passo do caminho.</p></div>
+        <a class="btn" href="plataforma.html">Criar conta <span aria-hidden="true">→</span></a>
+      </section>
     </main>
+
+    <footer class="footer wrap">
+      <div><img src="assets/home/logo.png?v=2" alt="NoSeuTempo" /><small>Aprendizagem que respeita cada mente, cada história e cada tempo.</small><div class="socials"><a class="footer-social" href="#"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3"/></svg></a><a class="footer-social" href="#"><svg viewBox="0 0 24 24"><path d="M4 8s0-3 3-3h10c3 0 3 3 3 3v8s0 3-3 3H7c-3 0-3-3-3-3z"/><path d="M10 9l5 3-5 3z"/></svg></a><a class="footer-social" href="#"><svg viewBox="0 0 24 24"><path d="M6 9v10"/><path d="M6 5v.01"/><path d="M11 19v-6a4 4 0 0 1 8 0v6"/></svg></a></div></div>
+      <div><h3>Navegação</h3><a>Início</a><a>Sobre nós</a><a>Recursos</a><a>Como funciona</a></div>
+      <div><h3>Recursos</h3><a>Cursos adaptados</a><a>Conteúdos externos</a><a>Geni IA</a><a>Acessibilidade</a></div>
+      <div><h3>Suporte</h3><a>Central de ajuda</a><a>Fale conosco</a><a>Dúvidas frequentes</a><a>Acessibilidade</a></div>
+      <div><h3>Legal</h3><a>Termos de uso</a><a>Política de privacidade</a><a>Política de cookies</a></div>
+      <div class="copyright">© 2025 NoSeuTempo. Todos os direitos reservados.</div>
+    </footer>
   </body>
 </html>
