@@ -45,7 +45,41 @@
         min-height: 84px;
         gap: 28px;
       }
-      .brand img { width: 245px; }
+      .brand,
+      .logo-lockup {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .logo-mark {
+        position: relative;
+        width: 54px;
+        height: 52px;
+        flex: 0 0 auto;
+      }
+      .logo-clock,
+      .logo-ring {
+        width: 54px;
+        height: 52px;
+      }
+      .logo-clock {
+        flex: 0 0 auto;
+      }
+      .logo-ring {
+        position: absolute;
+        inset: 0;
+        transform-origin: 50% 50%;
+        animation: logoRingSpin 8s linear infinite;
+        will-change: transform;
+      }
+      .logo-wordmark {
+        width: 186px;
+        height: auto;
+        flex: 0 0 auto;
+      }
+      @keyframes logoRingSpin {
+        to { transform: rotate(360deg); }
+      }
       .nav { display: flex; gap: 54px; justify-content: center; font-size: 14px; font-weight: 850; color: var(--ink); }
       .nav a.active { color: var(--purple); }
       .actions { display: flex; justify-content: flex-end; gap: 16px; }
@@ -349,10 +383,15 @@
         gap: 48px;
         padding: 44px 28px 18px;
       }
-      .footer img { width: 220px; }
+      .footer .logo-mark { width: 46px; height: 44px; }
+      .footer .logo-clock,
+      .footer .logo-ring { width: 46px; height: 44px; }
+      .footer .logo-wordmark { width: 162px; }
+      .footer .logo-lockup { gap: 8px; }
       .footer small { display: block; max-width: 240px; margin-top: 10px; color: var(--text); font-size: 13px; line-height: 1.45; }
       .footer h3 { margin: 0 0 14px; color: var(--ink); font-size: 13px; text-transform: uppercase; }
       .footer a, .footer span { display: block; margin-top: 10px; color: var(--text); font-size: 13px; }
+      .footer .logo-lockup { display: inline-flex; margin-top: 0; }
       .socials { display: flex; gap: 10px; margin-top: 14px; }
       .footer-social { display: grid !important; place-items: center; width: 28px; height: 28px; color: #7b859f; }
       .copyright { grid-column: 1 / -1; color: var(--muted); text-align: center; font-size: 12px; }
@@ -378,7 +417,10 @@
       @media (max-width: 680px) {
         .wrap { width: min(350px, calc(100% - 36px)); }
         .header { grid-template-columns: 1fr auto; min-height: 78px; }
-        .brand img { width: 205px; }
+        .logo-mark,
+        .logo-clock,
+        .logo-ring { width: 45px; height: 43px; }
+        .logo-wordmark { width: 154px; }
         .nav { display: none; }
         .actions .btn-outline { display: none; }
         .actions .btn { min-height: 42px; padding: 0 16px; }
@@ -408,11 +450,20 @@
         .cta .btn { width: 100%; min-width: 0; }
         .copyright { text-align: left; }
       }
+      @media (prefers-reduced-motion: reduce) {
+        .logo-ring { animation: none; }
+      }
     </style>
   </head>
   <body>
     <header class="header wrap">
-      <a class="brand" href="index.html" aria-label="NoSeuTempo"><img src="assets/home/logo.png?v=2" alt="NoSeuTempo" /></a>
+      <a class="brand" href="index.html" aria-label="NoSeuTempo">
+        <span class="logo-mark" aria-hidden="true">
+          <img class="logo-clock" src="assets/home/logo-clock.png" alt="" />
+          <img class="logo-ring" src="assets/home/logo-ring.png" alt="" />
+        </span>
+        <img class="logo-wordmark" src="assets/home/logo-wordmark.png" alt="NoSeuTempo" />
+      </a>
       <nav class="nav" aria-label="Navegação principal"><a class="active" href="#inicio">Início</a><a href="sobrenos.html">Sobre nós</a></nav>
       <div class="actions"><a class="btn btn-outline" href="plataforma.html">Entrar</a><a class="btn btn-primary" href="plataforma.html">Criar conta</a></div>
     </header>
@@ -503,7 +554,7 @@
     </main>
 
     <footer class="footer wrap">
-      <div><img src="assets/home/logo.png?v=2" alt="NoSeuTempo" /><small>Aprendizagem que respeita cada mente, cada história e cada tempo.</small><div class="socials"><a class="footer-social" href="#"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3"/></svg></a><a class="footer-social" href="#"><svg viewBox="0 0 24 24"><path d="M4 8s0-3 3-3h10c3 0 3 3 3 3v8s0 3-3 3H7c-3 0-3-3-3-3z"/><path d="M10 9l5 3-5 3z"/></svg></a><a class="footer-social" href="#"><svg viewBox="0 0 24 24"><path d="M6 9v10"/><path d="M6 5v.01"/><path d="M11 19v-6a4 4 0 0 1 8 0v6"/></svg></a></div></div>
+      <div><a class="logo-lockup" href="index.html" aria-label="NoSeuTempo"><span class="logo-mark" aria-hidden="true"><img class="logo-clock" src="assets/home/logo-clock.png" alt="" /><img class="logo-ring" src="assets/home/logo-ring.png" alt="" /></span><img class="logo-wordmark" src="assets/home/logo-wordmark.png" alt="NoSeuTempo" /></a><small>Aprendizagem que respeita cada mente, cada história e cada tempo.</small><div class="socials"><a class="footer-social" href="#"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3"/></svg></a><a class="footer-social" href="#"><svg viewBox="0 0 24 24"><path d="M4 8s0-3 3-3h10c3 0 3 3 3 3v8s0 3-3 3H7c-3 0-3-3-3-3z"/><path d="M10 9l5 3-5 3z"/></svg></a><a class="footer-social" href="#"><svg viewBox="0 0 24 24"><path d="M6 9v10"/><path d="M6 5v.01"/><path d="M11 19v-6a4 4 0 0 1 8 0v6"/></svg></a></div></div>
       <div><h3>Navegação</h3><a>Início</a><a>Sobre nós</a><a>Recursos</a><a>Como funciona</a></div>
       <div><h3>Recursos</h3><a>Cursos adaptados</a><a>Conteúdos externos</a><a>Geni IA</a><a>Acessibilidade</a></div>
       <div><h3>Suporte</h3><a>Central de ajuda</a><a>Fale conosco</a><a>Dúvidas frequentes</a><a>Acessibilidade</a></div>

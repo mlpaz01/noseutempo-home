@@ -14,15 +14,20 @@
       }
 
       :root {
-        --ink: #09245b;
-        --muted: #1f376f;
-        --purple: #6545d6;
-        --purple-2: #8e73ee;
-        --lavender: #f2edff;
-        --line: #d9d0f8;
-        --soft: #fbf9ff;
+        --ink: #08194b;
+        --text: #243360;
+        --muted: #667096;
+        --purple: #6b34df;
+        --purple-2: #934bff;
+        --blue: #248fdf;
+        --teal: #09a9a0;
+        --orange: #ff8a22;
+        --green: #15a86f;
+        --lavender: #f0e9ff;
+        --line: #e4e8f5;
+        --soft: #fbfcff;
         --white: #ffffff;
-        --shadow: 0 12px 30px rgba(43, 31, 109, 0.12);
+        --shadow: 0 18px 44px rgba(35, 45, 94, 0.09);
       }
 
       * {
@@ -35,8 +40,11 @@
 
       body {
         margin: 0;
-        background: #f6f3ff;
-        color: var(--ink);
+        background:
+          radial-gradient(circle at 18% 7%, rgba(35, 143, 223, 0.07), transparent 25%),
+          radial-gradient(circle at 82% 4%, rgba(107, 52, 223, 0.08), transparent 25%),
+          linear-gradient(180deg, #fff 0%, #fbfcff 55%, #fff 100%);
+        color: var(--text);
         font-family: Inter, "Segoe UI", Arial, Helvetica, sans-serif;
       }
 
@@ -54,7 +62,7 @@
         width: 100%;
         margin: 0 auto;
         overflow: hidden;
-        background: #f6f3ff;
+        background: transparent;
       }
 
       .site-header {
@@ -1197,14 +1205,16 @@
       .audience,
       .cta,
       .trust {
-        background: #f6f3ff !important;
+        background: transparent !important;
       }
 
       .click-card,
       .caixa-manifesto-premium,
       .quote-historia-topo,
       .cta-panel {
-        background: rgba(255, 255, 255, 0.64) !important;
+        background: rgba(255, 255, 255, 0.86) !important;
+        border-color: var(--line) !important;
+        box-shadow: var(--shadow) !important;
       }
 
       /* Cabecalho padronizado igual ao da home */
@@ -1230,18 +1240,18 @@
         display: flex;
         align-items: center;
         gap: 54px;
-        color: #07194b;
+        color: var(--ink);
         font-size: 16px;
-        font-weight: 700;
+        font-weight: 850;
       }
       .std-header .main-nav a {
         position: relative;
         padding: 0;
-        color: #07194b;
+        color: var(--ink);
       }
       .std-header .main-nav a.active,
       .std-header .main-nav a:hover {
-        color: #6545d6;
+        color: var(--purple);
       }
       .std-header .main-nav .active::after,
       .main-nav .active::after {
@@ -1261,14 +1271,73 @@
         border-radius: 999px;
         border: 1px solid transparent;
         font-size: 16px;
-        font-weight: 800;
+        font-weight: 900;
         white-space: nowrap;
         text-decoration: none;
       }
       .std-header .button-primary {
         color: #fff;
-        background: linear-gradient(120deg, #26a8df 0%, #7632d4 100%);
-        box-shadow: 0 14px 30px rgba(96, 63, 214, 0.25);
+        background: linear-gradient(120deg, var(--blue) 0%, var(--purple) 100%);
+        box-shadow: 0 14px 30px rgba(96, 63, 214, 0.22);
+      }
+
+      /* Paleta padronizada com a home */
+      .marca-no-seu,
+      .purple-text,
+      .editorial-badge,
+      .main-nav a:hover,
+      .main-nav a:focus-visible,
+      .main-nav .active {
+        color: var(--purple) !important;
+      }
+      .marca-tempo,
+      .logo-word .t,
+      .editorial-badge.teal,
+      .editorial-quote-aberto.teal,
+      .audience .eyebrow,
+      .cta .eyebrow {
+        color: var(--teal) !important;
+      }
+      .secao-historia-topo h2,
+      .titulo-historia,
+      .editorial-bloco-conteudo h2,
+      .audience h2,
+      .cta h2 {
+        color: var(--ink) !important;
+      }
+      .paragrafo-editorial,
+      .texto-historia p,
+      .editorial-paragrafo,
+      .card-text,
+      .cta p,
+      .trust-link,
+      .destaque-proposito {
+        color: var(--text) !important;
+      }
+      .icon-bubble {
+        color: var(--purple) !important;
+        background: color-mix(in srgb, var(--purple) 10%, #fff) !important;
+      }
+      .click-card:nth-child(3n + 2) .icon-bubble,
+      .trust-link:nth-child(2) .icon {
+        color: var(--blue) !important;
+        background: color-mix(in srgb, var(--blue) 10%, #fff) !important;
+      }
+      .click-card:nth-child(3n) .icon-bubble,
+      .trust-link:nth-child(3) .icon {
+        color: var(--teal) !important;
+        background: color-mix(in srgb, var(--teal) 10%, #fff) !important;
+      }
+      .click-card:hover,
+      .click-card:focus-visible {
+        border-color: color-mix(in srgb, var(--purple) 24%, var(--line)) !important;
+      }
+      html,
+      body {
+        background:
+          radial-gradient(circle at 18% 7%, rgba(35, 143, 223, 0.07), transparent 25%),
+          radial-gradient(circle at 82% 4%, rgba(107, 52, 223, 0.08), transparent 25%),
+          linear-gradient(180deg, #fff 0%, #fbfcff 55%, #fff 100%) !important;
       }
     </style>
   </head>
