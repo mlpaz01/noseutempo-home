@@ -1243,6 +1243,11 @@
       .std-header .main-nav a:hover {
         color: #6545d6;
       }
+      .std-header .main-nav .active::after,
+      .main-nav .active::after {
+        content: none !important;
+        display: none !important;
+      }
       .std-header > .button {
         justify-self: end;
       }
