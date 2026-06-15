@@ -1,0 +1,619 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NoSeuTempo | Para instituições</title>
+    <meta name="description" content="NoSeuTempo para instituições e empresas que querem adaptar conteúdos dentro da própria plataforma." />
+    <style>
+      :root {
+        --ink: #08194b;
+        --text: #26345f;
+        --muted: #697399;
+        --line: #e4e9f6;
+        --purple: #6b34df;
+        --blue: #248fdf;
+        --teal: #08a79d;
+        --green: #0ba35f;
+        --orange: #ff8a22;
+        --soft: #fbfcff;
+        --shadow: 0 18px 44px rgba(35, 45, 94, .09);
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        color: var(--text);
+        background: #fff;
+        font-family: Inter, "Segoe UI", Arial, sans-serif;
+      }
+      a { color: inherit; text-decoration: none; }
+      img { display: block; max-width: 100%; }
+      .wrap { width: min(1360px, calc(100% - 80px)); margin: 0 auto; }
+
+      .header {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        min-height: 74px;
+        border-bottom: 1px solid var(--line);
+      }
+      .brand { display: inline-flex; align-items: center; gap: 10px; }
+      .logo-mark { position: relative; width: 48px; height: 46px; flex: 0 0 auto; }
+      .logo-clock, .logo-ring { width: 48px; height: 46px; }
+      .logo-ring { position: absolute; inset: 0; transform-origin: 50% 50%; animation: logoRingSpin 8s linear infinite; }
+      .logo-wordmark { width: 172px; height: auto; }
+      @keyframes logoRingSpin { to { transform: rotate(360deg); } }
+
+      .nav { display: flex; justify-content: center; gap: 48px; color: var(--ink); font-size: 15px; font-weight: 850; }
+      .nav a { position: relative; padding: 28px 0 24px; }
+      .nav a.active { color: var(--purple); }
+      .nav a.active::after {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 3px;
+        content: "";
+        border-radius: 999px;
+        background: var(--blue);
+      }
+      .actions { display: flex; justify-content: flex-end; gap: 14px; }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        min-height: 44px;
+        padding: 0 24px;
+        border: 2px solid transparent;
+        border-radius: 10px;
+        font-size: 14px;
+        font-weight: 900;
+        white-space: nowrap;
+      }
+      .btn-primary { color: #fff; background: #07194b; box-shadow: 0 12px 24px rgba(7,25,75,.16); }
+      .btn-green { color: #fff; background: linear-gradient(135deg, #13ad68, #058d57); box-shadow: 0 12px 26px rgba(18,166,107,.2); }
+      .btn-outline { color: var(--ink); background: #fff; border-color: #7658f1; }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(440px, .78fr) minmax(620px, 1.22fr);
+        gap: 34px;
+        align-items: center;
+        padding: 34px 0 18px;
+        border-bottom: 1px solid var(--line);
+      }
+      .eyebrow {
+        display: inline-flex;
+        margin-bottom: 12px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        color: var(--purple);
+        background: #f3edff;
+        font-size: 12px;
+        font-weight: 950;
+        text-transform: uppercase;
+      }
+      h1 {
+        margin: 0;
+        color: var(--ink);
+        font-size: clamp(44px, 4.25vw, 62px);
+        line-height: .98;
+        letter-spacing: 0;
+      }
+      h1 span { color: var(--purple); }
+      .hero p {
+        max-width: 650px;
+        margin: 18px 0 0;
+        color: var(--text);
+        font-size: 19px;
+        line-height: 1.36;
+      }
+      .hero .support { margin-top: 12px; font-size: 15px; line-height: 1.5; }
+      .hero-actions { display: flex; gap: 16px; margin-top: 28px; flex-wrap: wrap; }
+
+      .hero-visual {
+        position: relative;
+        min-height: 392px;
+        overflow: hidden;
+        border-radius: 30px;
+        background:
+          radial-gradient(circle at 54% 45%, rgba(107,52,223,.12), transparent 34%),
+          radial-gradient(circle at 78% 24%, rgba(8,167,157,.10), transparent 24%),
+          linear-gradient(135deg, #fff, #fbfcff);
+      }
+      .geni-hero {
+        position: absolute;
+        left: 250px;
+        top: 52px;
+        z-index: 3;
+        width: 286px;
+        filter: drop-shadow(0 24px 36px rgba(107,52,223,.16));
+      }
+      .geni-badge {
+        position: absolute;
+        left: 326px;
+        bottom: 30px;
+        z-index: 6;
+        min-width: 142px;
+        padding: 12px 14px 12px 46px;
+        border: 1px solid #d9dff8;
+        border-radius: 16px;
+        background: rgba(255,255,255,.95);
+        box-shadow: 0 14px 30px rgba(35,45,94,.12);
+      }
+      .geni-badge::before {
+        position: absolute;
+        left: 13px;
+        top: 16px;
+        width: 22px;
+        height: 22px;
+        content: "";
+        border-radius: 8px;
+        background: linear-gradient(135deg, var(--purple), var(--blue));
+      }
+      .geni-badge strong { display: block; color: var(--ink); font-size: 15px; }
+      .geni-badge span { color: var(--text); font-size: 10px; font-weight: 800; line-height: 1.1; }
+      .integration-card {
+        position: absolute;
+        z-index: 4;
+        width: 210px;
+        padding: 16px;
+        border: 1px solid #dfe5f7;
+        border-radius: 18px;
+        background: rgba(255,255,255,.94);
+        box-shadow: 0 18px 38px rgba(35,45,94,.11);
+      }
+      .integration-card strong {
+        display: block;
+        color: var(--ink);
+        font-size: 15px;
+        line-height: 1.18;
+      }
+      .integration-card span {
+        display: block;
+        margin-top: 8px;
+        color: var(--text);
+        font-size: 12px;
+        line-height: 1.35;
+      }
+      .integration-card::before {
+        display: grid;
+        place-items: center;
+        width: 38px;
+        height: 38px;
+        margin-bottom: 12px;
+        border-radius: 13px;
+        color: #fff;
+        content: attr(data-icon);
+        background: linear-gradient(135deg, var(--blue), var(--purple));
+        font-weight: 950;
+      }
+      .integration-card.plugin { left: 18px; top: 40px; }
+      .integration-card.adapt { right: 16px; top: 58px; }
+      .integration-card.content { left: 24px; bottom: 38px; }
+      .integration-card.safe { right: 28px; bottom: 46px; }
+      .integration-line {
+        position: absolute;
+        inset: 78px 116px 70px 96px;
+        border: 2px dashed rgba(107,52,223,.2);
+        border-radius: 999px;
+      }
+      .screen {
+        position: absolute;
+        right: 0;
+        top: 28px;
+        width: 620px;
+        min-height: 268px;
+        padding: 22px 22px 70px;
+        border: 1px solid #d8def4;
+        border-radius: 22px;
+        background:
+          linear-gradient(#fff, #fff) padding-box,
+          linear-gradient(135deg, rgba(36,143,223,.2), rgba(107,52,223,.22)) border-box;
+        box-shadow: 0 24px 54px rgba(35,45,94,.16);
+      }
+      .screen::before {
+        position: absolute;
+        right: 28px;
+        bottom: 16px;
+        left: 28px;
+        height: 14px;
+        content: "";
+        border-radius: 0 0 28px 28px;
+        background: linear-gradient(90deg, #d5dbea, #f8f9ff, #d5dbea);
+      }
+      .screen-top { display: flex; justify-content: space-between; color: var(--ink); font-size: 12px; font-weight: 900; }
+      .screen-nav { display: flex; gap: 18px; margin-top: 17px; color: var(--ink); font-size: 11px; font-weight: 800; }
+      .screen-nav span:first-child {
+        padding: 6px 12px;
+        margin-top: -6px;
+        color: #fff;
+        border-radius: 8px;
+        background: linear-gradient(135deg, var(--blue), var(--purple));
+      }
+      .screen-grid { display: grid; grid-template-columns: 1.28fr .82fr; gap: 14px; margin-top: 16px; }
+      .lesson, .side-card, .material { border: 1px solid var(--line); border-radius: 12px; background: #fff; }
+      .lesson { padding: 18px; }
+      .lesson strong { color: var(--ink); font-size: 16px; }
+      .line { height: 8px; margin-top: 14px; border-radius: 99px; background: #dfe4f5; }
+      .line.short { width: 58%; }
+      .adapt-btn {
+        display: inline-flex;
+        margin-top: 20px;
+        padding: 10px 20px;
+        border-radius: 9px;
+        color: #fff;
+        background: linear-gradient(135deg, var(--blue), var(--purple));
+        font-size: 13px;
+        font-weight: 900;
+      }
+      .side-card { padding: 16px; }
+      .dotline { display: block; height: 8px; margin: 11px 0; border-radius: 99px; background: #cbd3e9; }
+      .dotline:nth-child(2) { width: 80%; }
+      .dotline:nth-child(3) { width: 52%; }
+      .materials { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 14px; }
+      .material { min-height: 40px; }
+      .consent {
+        position: absolute;
+        right: 28px;
+        bottom: 20px;
+        z-index: 5;
+        width: 310px;
+        padding: 16px;
+        border: 1px solid #cfd8f6;
+        border-radius: 16px;
+        background: #fff;
+        box-shadow: 0 18px 38px rgba(35,45,94,.15);
+      }
+      .consent b { display: block; color: var(--ink); font-size: 14px; line-height: 1.25; text-align: center; }
+      .consent p { margin: 12px 0; color: var(--text); font-size: 12px; text-align: center; }
+      .consent .yes, .consent .no {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 34px;
+        border-radius: 8px;
+        font-size: 12px;
+        font-weight: 900;
+      }
+      .consent .yes { color: #fff; background: var(--green); }
+      .consent .no { margin-top: 8px; color: var(--ink); border: 1px solid #cbd5f4; background: #fff; }
+
+      .integrity {
+        display: grid;
+        grid-template-columns: 360px 1fr 1fr;
+        gap: 28px;
+        align-items: center;
+        margin: 18px 0 0;
+        padding: 22px 26px;
+        border: 1px solid #dccffd;
+        border-radius: 22px;
+        background: linear-gradient(90deg, #fbf7ff, #fff);
+        box-shadow: 0 12px 28px rgba(107,52,223,.06);
+      }
+      .book-art {
+        min-height: 128px;
+        border-radius: 20px;
+        background:
+          radial-gradient(circle at 22% 42%, rgba(18,166,107,.18), transparent 22%),
+          radial-gradient(circle at 78% 34%, rgba(107,52,223,.16), transparent 24%),
+          linear-gradient(135deg, #fff, #f2edff);
+        position: relative;
+      }
+      .book-art::before {
+        position: absolute;
+        left: 70px;
+        top: 28px;
+        width: 190px;
+        height: 74px;
+        content: "";
+        border: 3px solid #8b6cf6;
+        border-radius: 8px 8px 22px 22px;
+        background: linear-gradient(90deg, #fff 49%, #eee8ff 50%);
+        box-shadow: 0 16px 24px rgba(107,52,223,.16);
+      }
+      .integrity h2 { grid-column: 2 / -1; margin: 0 0 -4px; color: var(--ink); font-size: 30px; }
+      .integrity-copy { display: grid; grid-template-columns: 48px 1fr; gap: 16px; align-items: start; font-size: 15px; line-height: 1.5; }
+      .integrity-copy p { margin: 0; }
+
+      .row-section {
+        display: grid;
+        grid-template-columns: 205px 1fr;
+        gap: 24px;
+        align-items: center;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .row-title h2 { margin: 0; color: var(--ink); font-size: 22px; line-height: 1.12; }
+      .compact-grid { display: grid; gap: 10px; }
+      .who-grid { grid-template-columns: repeat(5, 1fr); }
+      .steps-grid { grid-template-columns: repeat(5, 1fr); }
+      .features-grid { grid-template-columns: repeat(4, 1fr); }
+      .benefits-grid { grid-template-columns: repeat(6, 1fr); }
+      .mini-card {
+        display: grid;
+        grid-template-columns: 58px 1fr;
+        gap: 14px;
+        align-items: center;
+        min-height: 76px;
+        padding: 14px 16px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: #fff;
+        box-shadow: 0 8px 20px rgba(35,45,94,.035);
+      }
+      .mini-card.vertical { display: block; min-height: 116px; }
+      .step-card {
+        position: relative;
+        grid-template-columns: 48px 1fr;
+        min-height: 116px;
+        padding-top: 18px;
+      }
+      .icon {
+        display: grid;
+        place-items: center;
+        width: 48px;
+        height: 48px;
+        border-radius: 16px;
+        color: var(--c);
+        background: color-mix(in srgb, var(--c) 10%, #fff);
+      }
+      .icon svg { width: 30px; height: 30px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+      .mini-card h3, .benefit-card h3 { margin: 0; color: var(--ink); line-height: 1.18; }
+      .mini-card h3 { font-size: 15px; }
+      .mini-card p { margin: 7px 0 0; font-size: 12px; line-height: 1.35; }
+      .num {
+        display: grid;
+        place-items: center;
+        width: 28px;
+        height: 28px;
+        margin-bottom: 12px;
+        border-radius: 50%;
+        color: #fff;
+        background: var(--c);
+        font-size: 13px;
+        font-weight: 950;
+      }
+      .step-card .num {
+        position: absolute;
+        left: 14px;
+        top: 14px;
+        margin: 0;
+      }
+      .step-card .icon {
+        margin-top: 32px;
+        width: 44px;
+        height: 44px;
+      }
+      .step-card h3 { margin-top: 6px; font-size: 14px; }
+      .benefit-card {
+        min-height: 140px;
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: #fff;
+      }
+      .benefit-card .icon { width: 42px; height: 42px; margin-bottom: 12px; border-radius: 14px; }
+      .benefit-card h3 { font-size: 14px; }
+      .benefit-card p { margin: 7px 0 0; font-size: 11px; line-height: 1.35; }
+
+      .ownership {
+        display: grid;
+        grid-template-columns: 470px 1fr 145px;
+        gap: 26px;
+        align-items: center;
+        margin: 22px 0 0;
+        padding: 16px 24px;
+        border: 1px solid #bfe9d9;
+        border-radius: 20px;
+        background: linear-gradient(90deg, #fbfffd, #f8fbff);
+      }
+      .ownership-art {
+        min-height: 120px;
+        border: 1px dashed #b9dcca;
+        border-radius: 16px;
+        background:
+          radial-gradient(circle at 25% 48%, rgba(18,166,107,.12), transparent 26%),
+          radial-gradient(circle at 76% 50%, rgba(36,143,223,.12), transparent 25%),
+          linear-gradient(#fff, #fff);
+        position: relative;
+      }
+      .ownership-art::before {
+        position: absolute;
+        inset: 38px 48px auto;
+        height: 44px;
+        content: "Seu conteudo  ->  Sua plataforma  ->  Adaptacao NoSeuTempo";
+        display: grid;
+        place-items: center;
+        color: var(--ink);
+        border: 1px solid #d9e6f8;
+        border-radius: 12px;
+        background: #fff;
+        font-size: 13px;
+        font-weight: 900;
+      }
+      .ownership h2 { margin: 0; color: var(--ink); font-size: 26px; }
+      .ownership p { margin: 9px 0 0; font-size: 15px; line-height: 1.45; }
+      .small-geni { justify-self: center; width: 138px; filter: drop-shadow(0 16px 28px rgba(107,52,223,.14)); }
+
+      .cta {
+        display: grid;
+        grid-template-columns: 80px 1fr auto;
+        gap: 24px;
+        align-items: center;
+        margin: 18px 0 36px;
+        padding: 24px 30px;
+        border-radius: 22px;
+        background: linear-gradient(90deg, #f4eaff, #ecf6ff);
+      }
+      .cta-heart {
+        display: grid;
+        place-items: center;
+        width: 66px;
+        height: 66px;
+        border-radius: 50%;
+        color: #fff;
+        background: var(--purple);
+        font-size: 34px;
+      }
+      .cta h2 { margin: 0; color: var(--ink); font-size: 26px; }
+      .cta p { margin: 6px 0 0; font-size: 14px; line-height: 1.4; }
+
+      @media (max-width: 1100px) {
+        .wrap { width: min(900px, calc(100% - 44px)); }
+        .header { grid-template-columns: 1fr auto; }
+        .nav { order: 3; grid-column: 1 / -1; padding-bottom: 12px; }
+        .hero, .integrity, .row-section, .ownership { grid-template-columns: 1fr; }
+        .integrity h2 { grid-column: auto; }
+        .screen { right: 0; width: 82%; }
+        .geni-hero { left: 50%; transform: translateX(-50%); }
+        .geni-badge { left: 50%; transform: translateX(-12%); }
+        .who-grid, .steps-grid, .features-grid, .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+        .cta { grid-template-columns: 1fr; }
+      }
+      @media (max-width: 680px) {
+        .wrap { width: min(100% - 34px, 390px); }
+        .actions .btn-outline, .nav { display: none; }
+        h1 { font-size: 42px; }
+        .hero p { font-size: 18px; }
+        .hero-visual { min-height: 600px; }
+        .geni-hero { left: 50%; top: 134px; width: 190px; transform: translateX(-50%); }
+        .geni-badge { left: 50%; bottom: 18px; transform: translateX(-50%); }
+        .integration-card { width: calc(50% - 24px); padding: 12px; }
+        .integration-card.plugin { left: 12px; top: 14px; }
+        .integration-card.adapt { right: 12px; top: 14px; }
+        .integration-card.content { left: 12px; bottom: 116px; }
+        .integration-card.safe { right: 12px; bottom: 116px; }
+        .integration-line { inset: 128px 40px 168px; }
+        .screen { top: 176px; width: 100%; }
+        .consent { right: 12px; bottom: 18px; width: calc(100% - 24px); }
+        .who-grid, .steps-grid, .features-grid, .benefits-grid { grid-template-columns: 1fr; }
+        .ownership-art::before { inset: 34px 18px auto; font-size: 11px; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .logo-ring { animation: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header wrap">
+      <a class="brand" href="/index.html" aria-label="NoSeuTempo">
+        <span class="logo-mark" aria-hidden="true">
+          <img class="logo-clock" src="assets/home/logo-clock.png" alt="" />
+          <img class="logo-ring" src="assets/home/logo-ring.png" alt="" />
+        </span>
+        <img class="logo-wordmark" src="assets/home/logo-wordmark.png" alt="NoSeuTempo" />
+      </a>
+      <nav class="nav" aria-label="Navegacao principal">
+        <a href="/index.html">Início</a>
+        <a href="/index.html#jornada">Metodo</a>
+        <a class="active" href="/parceiros.html">Para Instituições</a>
+        <a href="/sobrenos.html">Sobre Nós</a>
+      </nav>
+      <div class="actions">
+        <a class="btn btn-outline" href="/plataforma.html">Entrar</a>
+        <a class="btn btn-primary" href="/plataforma.html">Criar conta</a>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section class="hero">
+        <div>
+          <span class="eyebrow">Para instituições e empresas</span>
+          <h1>O Método NoSeuTempo, agora <span>integrado à sua plataforma de ensino.</span></h1>
+          <p>Leve acessibilidade, inclusão e inteligência adaptativa para aulas, treinamentos e cursos, sem precisar mudar de sistema.</p>
+          <p class="support">O NoSeuTempo se integra ao seu site ou plataforma por meio de um plugin, botão ou experiência incorporada. Assim, o aluno pode ativar, de forma opcional, uma experiência adaptada dentro do seu próprio ambiente.</p>
+          <div class="hero-actions">
+            <a class="btn btn-green" href="mailto:contato@noseutempo.app">Falar com a gente <span aria-hidden="true">&rarr;</span></a>
+            <a class="btn btn-outline" href="mailto:contato@noseutempo.app">Falar com um especialista</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-label="NoSeuTempo integrado a plataforma parceira">
+          <div class="integration-line" aria-hidden="true"></div>
+          <div class="integration-card plugin" data-icon="1"><strong>Convite opcional</strong><span>O aluno escolhe usar a experiência NoSeuTempo.</span></div>
+          <div class="integration-card adapt" data-icon="2"><strong>Te Conhecendo Melhor</strong><span>Preferências, dificuldades e diagnóstico opcional.</span></div>
+          <div class="integration-card content" data-icon="3"><strong>Adaptação no seu ambiente</strong><span>O conteúdo é adaptado dentro da plataforma parceira.</span></div>
+          <div class="integration-card safe" data-icon="4"><strong>Apoio da Geni IA</strong><span>Explicações, acessibilidade e novas formas de aprender.</span></div>
+          <img class="geni-hero" src="assets/home/geni-hero.png" alt="Geni IA, assistente de aprendizagem do NoSeuTempo" />
+          <div class="geni-badge"><strong>Geni IA</strong><span>Sua assistente de aprendizagem</span></div>
+        </div>
+      </section>
+
+      <section class="integrity">
+        <div class="book-art" aria-hidden="true"></div>
+        <h2>O foco é o aprendizado real.</h2>
+        <div class="integrity-copy">
+          <span class="icon" style="--c:var(--purple)"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4-9-8.5A5 5 0 0 1 12 7a5 5 0 0 1 9 5.5C19 17 12 21 12 21z"/></svg></span>
+          <p>Quando o conteúdo é rígido e exaustivo, muitos alunos, inseguros, acabam recorrendo à IA nas avaliações como saída fácil.</p>
+        </div>
+        <div class="integrity-copy">
+          <span class="icon" style="--c:var(--green)"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4-9-8.5A5 5 0 0 1 12 7a5 5 0 0 1 9 5.5C19 17 12 21 12 21z"/></svg></span>
+          <p>O NoSeuTempo reduz isso ao ajudar o aluno a compreender de verdade durante a jornada de aprendizagem. Assim, na avaliação, ele confia no que aprendeu e usa a IA apenas como apoio ou confirmação, não como atalho.</p>
+        </div>
+      </section>
+
+      <section class="row-section">
+        <div class="row-title"><h2>Para quem é</h2></div>
+        <div class="compact-grid who-grid">
+          <article class="mini-card"><span class="icon" style="--c:var(--purple)"><svg viewBox="0 0 24 24"><path d="M4 8l8-4 8 4-8 4z"/><path d="M6 10v5c2 2 10 2 12 0v-5"/></svg></span><div><h3>Faculdades e Universidades</h3><p>Democratize o ensino superior com mais acessibilidade e apoio para todos os alunos.</p></div></article>
+          <article class="mini-card"><span class="icon" style="--c:var(--green)"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M4 4.5A2.5 2.5 0 0 1 6.5 7H20v14H6.5A2.5 2.5 0 0 1 4 18.5z"/></svg></span><div><h3>Cursos Livres</h3><p>Torne seus materiais mais acessíveis e aumente a taxa de conclusão.</p></div></article>
+          <article class="mini-card"><span class="icon" style="--c:var(--blue)"><svg viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V5h6v2"/><path d="M4 12h16"/></svg></span><div><h3>Treinamentos Corporativos</h3><p>Capacite equipes com experiências inclusivas e mais engajadoras.</p></div></article>
+          <article class="mini-card"><span class="icon" style="--c:var(--teal)"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4-9-8.5A5 5 0 0 1 12 7a5 5 0 0 1 9 5.5C19 17 12 21 12 21z"/><path d="M12 10v5"/><path d="M9.5 12.5h5"/></svg></span><div><h3>Clínicas e Terapeutas</h3><p>Apoie seus pacientes com conteúdos mais compreensíveis e acessíveis.</p></div></article>
+          <article class="mini-card"><span class="icon" style="--c:var(--green)"><svg viewBox="0 0 24 24"><path d="M4 21V8l8-4 8 4v13"/><path d="M9 21v-6h6v6"/></svg></span><div><h3>Escolas</h3><p>Promova inclusão e aprendizagem para todos os estudantes.</p></div></article>
+        </div>
+      </section>
+
+      <section class="row-section" id="como-funciona">
+        <div class="row-title"><h2>Como funciona na prática</h2></div>
+        <div class="compact-grid steps-grid">
+          <article class="mini-card step-card" style="--c:var(--green)"><b class="num">1</b><span class="icon"><svg viewBox="0 0 24 24"><path d="M4 8l8 5 8-5"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg></span><div><h3>Convite gentil</h3><p>O aluno escolhe ativar a experiência NoSeuTempo.</p></div></article>
+          <article class="mini-card step-card" style="--c:var(--blue)"><b class="num">2</b><span class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M5 21c1.2-5 3.7-8 7-8s5.8 3 7 8"/><path d="M19 5v4"/><path d="M17 7h4"/></svg></span><div><h3>Te Conhecendo Melhor</h3><p>Preferências, dificuldades e diagnóstico opcional.</p></div></article>
+          <article class="mini-card step-card" style="--c:var(--purple)"><b class="num">3</b><span class="icon"><svg viewBox="0 0 24 24"><path d="M4 21h16"/><rect x="5" y="4" width="14" height="11" rx="2"/><path d="M8 18h8"/></svg></span><div><h3>Adaptação no seu ambiente</h3><p>O conteúdo é adaptado dentro da plataforma parceira.</p></div></article>
+          <article class="mini-card step-card" style="--c:var(--purple)"><b class="num">4</b><span class="icon"><svg viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="12" rx="4"/><path d="M9 11h.01"/><path d="M15 11h.01"/><path d="M9 15c2 1.2 4 1.2 6 0"/></svg></span><div><h3>Apoio da Geni IA</h3><p>Explicações, acessibilidade e novas formas de aprender.</p></div></article>
+          <article class="mini-card step-card" style="--c:var(--ink)"><b class="num">5</b><span class="icon"><svg viewBox="0 0 24 24"><path d="M4 19V5"/><path d="M8 19v-6"/><path d="M12 19v-9"/><path d="M16 19v-4"/><path d="M20 19V8"/></svg></span><div><h3>Acompanhamento</h3><p>Progresso, relatórios e apoio ao aprendizado.</p></div></article>
+        </div>
+      </section>
+
+      <section class="row-section">
+        <div class="row-title"><h2>O que a instituição oferece com o NoSeuTempo</h2></div>
+        <div class="compact-grid features-grid">
+          <article class="mini-card"><span class="icon" style="--c:var(--green)"><svg viewBox="0 0 24 24"><path d="M6 3h9l3 3v15H6z"/><path d="M15 3v4h4"/><path d="M9 12h6"/></svg></span><div><h3>Texto facilitado</h3></div></article>
+          <article class="mini-card"><span class="icon" style="--c:var(--blue)"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 16 0"/><path d="M4 12v4a2 2 0 0 0 2 2h1v-6H4z"/><path d="M20 12v4a2 2 0 0 1-2 2h-1v-6h3z"/></svg></span><div><h3>Áudio e leitura narrada</h3></div></article>
+          <article class="mini-card"><span class="icon" style="--c:var(--purple)"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3z"/></svg></span><div><h3>Videos curtos</h3></div></article>
+          <article class="mini-card"><span class="icon" style="--c:var(--green)"><svg viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M8 14a6 6 0 1 1 8 0c-1 1-1 2-1 4H9c0-2 0-3-1-4z"/></svg></span><div><h3>Explicações alternativas</h3></div></article>
+          <article class="mini-card"><span class="icon" style="--c:var(--purple)"><svg viewBox="0 0 24 24"><path d="M6 12h4"/><path d="M8 10v4"/><path d="M15 12h.01"/><path d="M18 10h.01"/><path d="M17 16l3 2 1-8a5 5 0 0 0-5-6H8a5 5 0 0 0-5 6l1 8 3-2z"/></svg></span><div><h3>Jogos e treino extra</h3></div></article>
+          <article class="mini-card"><span class="icon" style="--c:var(--green)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v8"/><path d="M8 12h8"/></svg></span><div><h3>Desafios adaptados</h3></div></article>
+          <article class="mini-card"><span class="icon" style="--c:var(--purple)"><svg viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span><div><h3>Acessibilidade visual</h3></div></article>
+          <article class="mini-card"><span class="icon" style="--c:var(--blue)"><svg viewBox="0 0 24 24"><path d="M6 3h9l3 3v15H6z"/><path d="M15 3v4h4"/><path d="M9 13h6"/><path d="M9 17h4"/></svg></span><div><h3>Relatórios de acompanhamento</h3></div></article>
+        </div>
+      </section>
+
+      <section class="row-section">
+        <div class="row-title"><h2>Benefícios para a sua instituição</h2></div>
+        <div class="compact-grid benefits-grid">
+          <article class="benefit-card"><span class="icon" style="--c:var(--green)"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/><path d="M7 7l10 10"/><path d="M17 7L7 17"/></svg></span><h3>Implementação leve</h3><p>Integração simples via plugin ou link, sem complicação.</p></article>
+          <article class="benefit-card"><span class="icon" style="--c:var(--green)"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v6c0 4.8-3.2 7.4-8 8-4.8-.6-8-3.2-8-8V7l8-4z"/><path d="M9 12l2 2 4-4"/></svg></span><h3>Segurança e privacidade</h3><p>Dados protegidos com cuidado e conformidade LGPD.</p></article>
+          <article class="benefit-card"><span class="icon" style="--c:var(--purple)"><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M3 20c.8-4 2.8-6 5-6s4.2 2 5 6"/><path d="M11 20c.8-4 2.8-6 5-6s4.2 2 5 6"/></svg></span><h3>Mais inclusão e retenção</h3><p>Alunos mais engajados, satisfeitos e com melhores resultados.</p></article>
+          <article class="benefit-card"><span class="icon" style="--c:var(--blue)"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v6c0 4.8-3.2 7.4-8 8-4.8-.6-8-3.2-8-8V7l8-4z"/><path d="M9 13h6"/><path d="M12 10v6"/></svg></span><h3>Uso no ambiente existente</h3><p>A tecnologia se encaixa no sistema que a instituição já usa.</p></article>
+          <article class="benefit-card"><span class="icon" style="--c:#c43ac9"><svg viewBox="0 0 24 24"><path d="M6 3h9l3 3v15H6z"/><path d="M15 3v4h4"/><path d="M9 13l2 2 4-4"/></svg></span><h3>Seu conteúdo continua sendo seu</h3><p>Você define o conteúdo. Nós apenas adaptamos para cada aluno.</p></article>
+          <article class="benefit-card"><span class="icon" style="--c:var(--blue)"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v6c0 4.8-3.2 7.4-8 8-4.8-.6-8-3.2-8-8V7l8-4z"/><path d="M9 12h6"/><path d="M12 9v6"/></svg></span><h3>Integridade acadêmica</h3><p>A tecnologia apoia o conteúdo para o aluno aprender de verdade.</p></article>
+        </div>
+      </section>
+
+      <section class="ownership">
+        <div class="ownership-art"></div>
+        <div><h2>Seu conteúdo continua sendo seu.</h2><p>O NoSeuTempo entra como uma camada adaptativa para tornar a aprendizagem mais acessível, acolhedora e personalizada.</p></div>
+        <img class="small-geni" src="assets/home/geni-hero.png" alt="Geni IA" />
+      </section>
+
+      <section class="cta">
+        <span class="cta-heart" aria-hidden="true">♡</span>
+        <div><h2>Vamos transformar a experiência de aprendizagem da sua instituição juntos?</h2><p>Dê aos seus alunos e colaboradores o direito de aprender no tempo e no estilo deles.</p></div>
+        <a class="btn btn-green" href="mailto:contato@noseutempo.app">Quero o NoSeuTempo na minha plataforma <span aria-hidden="true">&rarr;</span></a>
+      </section>
+    </main>
+  </body>
+</html>
