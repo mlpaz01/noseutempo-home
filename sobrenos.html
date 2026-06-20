@@ -14,20 +14,15 @@
       }
 
       :root {
-        --ink: #08194b;
-        --text: #243360;
-        --muted: #667096;
-        --purple: #6b34df;
-        --purple-2: #934bff;
-        --blue: #248fdf;
-        --teal: #09a9a0;
-        --orange: #ff8a22;
-        --green: #15a86f;
-        --lavender: #f0e9ff;
-        --line: #e4e8f5;
-        --soft: #fbfcff;
+        --ink: #09245b;
+        --muted: #1f376f;
+        --purple: #6545d6;
+        --purple-2: #8e73ee;
+        --lavender: #f2edff;
+        --line: #d9d0f8;
+        --soft: #fbf9ff;
         --white: #ffffff;
-        --shadow: 0 18px 44px rgba(35, 45, 94, 0.09);
+        --shadow: 0 12px 30px rgba(43, 31, 109, 0.12);
       }
 
       * {
@@ -40,8 +35,8 @@
 
       body {
         margin: 0;
-        background: #ffffff;
-        color: var(--text);
+        background: #f6f3ff;
+        color: var(--ink);
         font-family: Inter, "Segoe UI", Arial, Helvetica, sans-serif;
       }
 
@@ -59,7 +54,7 @@
         width: 100%;
         margin: 0 auto;
         overflow: hidden;
-        background: transparent;
+        background: #f6f3ff;
       }
 
       .site-header {
@@ -368,6 +363,12 @@
         grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.1fr);
       }
 
+      .geni-grid-wrapper {
+        max-width: 1360px;
+        grid-template-columns: minmax(360px, 0.9fr) minmax(460px, 1fr);
+        gap: clamp(56px, 6.5vw, 96px);
+      }
+
       .editorial-bloco-conteudo {
         width: 100%;
         text-align: left;
@@ -458,12 +459,24 @@
         border-radius: 18px;
       }
 
+      .geni-visual-clean {
+        position: relative;
+        min-height: auto;
+      }
+
+      .geni-visual-clean::before {
+        content: none;
+      }
+
       .geni-ia-imagem {
-        max-width: 340px;
-        overflow: hidden;
-        border-radius: 24px;
-        box-shadow: 0 14px 30px rgba(43, 31, 109, 0.1);
-        filter: none;
+        position: relative;
+        z-index: 1;
+        width: min(100%, 480px);
+        max-width: 480px;
+        overflow: visible;
+        border-radius: 0;
+        box-shadow: none;
+        filter: drop-shadow(0 24px 34px rgba(43, 31, 109, 0.12));
       }
 
       .secao-nossa-historia {
@@ -568,7 +581,7 @@
 
       .secao-historia-topo {
         width: 100%;
-        padding: 42px 4% 24px;
+        padding: 80px 4% 24px;
         overflow: hidden;
         background: transparent;
       }
@@ -848,13 +861,11 @@
 
       .cta-panel {
         display: grid;
-        grid-template-columns: 1fr 1.22fr;
-        min-height: 307px;
-        overflow: hidden;
-        border-radius: 12px;
-        background:
-          radial-gradient(circle at 30% 24%, rgba(141, 114, 238, 0.2), transparent 32%),
-          linear-gradient(90deg, rgba(255, 255, 255, 0.6) 0%, rgba(239, 231, 255, 0.72) 100%);
+        grid-template-columns: minmax(300px, 0.82fr) minmax(0, 1.36fr);
+        min-height: 390px;
+        overflow: visible;
+        border-radius: 0;
+        background: transparent;
       }
 
       .cta-copy {
@@ -880,8 +891,11 @@
       .cta-art {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        padding: 22px 26px 22px 0;
+        box-sizing: border-box;
+        object-fit: contain;
         object-position: center;
+        mix-blend-mode: multiply;
       }
 
       .trust {
@@ -994,6 +1008,10 @@
           gap: 34px;
         }
 
+        .geni-grid-wrapper {
+          max-width: 680px;
+        }
+
         .ordem-mobile-imagem {
           order: -1;
         }
@@ -1013,7 +1031,7 @@
 
         .secao-historia-topo {
           min-height: auto;
-          padding: 32px 24px 0;
+          padding: 52px 24px 0;
         }
 
         .grid-historia-topo {
@@ -1051,7 +1069,7 @@
         }
 
         .geni-ia-imagem {
-          max-width: 280px;
+          max-width: 360px;
         }
 
         .secao-nossa-historia {
@@ -1202,195 +1220,46 @@
       .audience,
       .cta,
       .trust {
-        background: transparent !important;
+        background: #f6f3ff !important;
       }
 
       .click-card,
       .caixa-manifesto-premium,
-      .quote-historia-topo,
+      .quote-historia-topo {
+        background: rgba(255, 255, 255, 0.64) !important;
+      }
+
       .cta-panel {
-        background: rgba(255, 255, 255, 0.86) !important;
-        border-color: var(--line) !important;
-        box-shadow: var(--shadow) !important;
-      }
-
-      /* Cabecalho padronizado igual ao da home */
-      .std-header {
-        width: min(1200px, calc(100% - 72px)) !important;
-        margin: 0 auto !important;
-        display: grid !important;
-        grid-template-columns: 1fr auto 1fr !important;
-        align-items: center !important;
-        gap: 28px !important;
-        min-height: 92px !important;
-        position: static !important;
         background: transparent !important;
-        border: 0 !important;
-        box-shadow: none !important;
-        backdrop-filter: none !important;
-      }
-      .std-header .brand img {
-        width: 282px;
-        max-width: 100%;
-      }
-      .std-header .brand {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-      }
-      .std-header .logo-mark {
-        position: relative;
-        width: 54px;
-        height: 52px;
-        flex: 0 0 auto;
-        color: var(--ink);
-        filter: drop-shadow(0 0 8px rgba(36, 143, 223, .13));
-      }
-      .std-header .brand .logo-clock,
-      .std-header .brand .logo-ring {
-        width: 54px;
-        height: 52px;
-        max-width: none;
-      }
-      .std-header .brand .logo-ring {
-        position: absolute;
-        inset: 0;
-        transform-origin: 50% 50%;
-        animation: logoRingSpin 8s linear infinite;
-        will-change: transform;
-      }
-      .std-header .brand .logo-wordmark {
-        width: 186px;
-        height: auto;
-        max-width: none;
-      }
-      @keyframes logoRingSpin {
-        to { transform: rotate(360deg); }
-      }
-      .std-header .main-nav {
-        display: flex;
-        align-items: center;
-        gap: 54px;
-        color: var(--ink);
-        font-size: 16px;
-        font-weight: 850;
-      }
-      .std-header .main-nav a {
-        position: relative;
-        padding: 0;
-        color: var(--ink);
-      }
-      .std-header .main-nav a.active,
-      .std-header .main-nav a:hover {
-        color: var(--purple);
-      }
-      .std-header .main-nav .active::after,
-      .main-nav .active::after {
-        content: none !important;
-        display: none !important;
-      }
-      .std-header > .button {
-        justify-self: end;
-      }
-      .std-header .button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        min-height: 52px;
-        padding: 0 30px;
-        border-radius: 999px;
-        border: 1px solid transparent;
-        font-size: 16px;
-        font-weight: 900;
-        white-space: nowrap;
-        text-decoration: none;
-      }
-      .std-header .button-primary {
-        color: #fff;
-        background: linear-gradient(120deg, var(--blue) 0%, var(--purple) 100%);
-        box-shadow: 0 14px 30px rgba(96, 63, 214, 0.22);
-      }
-
-      /* Paleta padronizada com a home */
-      .marca-no-seu,
-      .purple-text,
-      .editorial-badge,
-      .main-nav a:hover,
-      .main-nav a:focus-visible,
-      .main-nav .active {
-        color: var(--purple) !important;
-      }
-      .marca-tempo,
-      .logo-word .t,
-      .editorial-badge.teal,
-      .editorial-quote-aberto.teal,
-      .audience .eyebrow,
-      .cta .eyebrow {
-        color: var(--teal) !important;
-      }
-      .secao-historia-topo h2,
-      .titulo-historia,
-      .editorial-bloco-conteudo h2,
-      .audience h2,
-      .cta h2 {
-        color: var(--ink) !important;
-      }
-      .paragrafo-editorial,
-      .texto-historia p,
-      .editorial-paragrafo,
-      .card-text,
-      .cta p,
-      .trust-link,
-      .destaque-proposito {
-        color: var(--text) !important;
-      }
-      .icon-bubble {
-        color: var(--purple) !important;
-        background: color-mix(in srgb, var(--purple) 10%, #fff) !important;
-      }
-      .click-card:nth-child(3n + 2) .icon-bubble,
-      .trust-link:nth-child(2) .icon {
-        color: var(--blue) !important;
-        background: color-mix(in srgb, var(--blue) 10%, #fff) !important;
-      }
-      .click-card:nth-child(3n) .icon-bubble,
-      .trust-link:nth-child(3) .icon {
-        color: var(--teal) !important;
-        background: color-mix(in srgb, var(--teal) 10%, #fff) !important;
-      }
-      .click-card:hover,
-      .click-card:focus-visible {
-        border-color: color-mix(in srgb, var(--purple) 24%, var(--line)) !important;
-      }
-      @media (prefers-reduced-motion: reduce) {
-        .std-header .brand .logo-ring {
-          animation: none;
-        }
-      }
-      html,
-      body {
-        background: #ffffff !important;
       }
     </style>
   </head>
   <body>
     <div class="page">
-      <header class="site-header std-header" id="inicio">
-        <a class="brand" href="index.html" aria-label="NoSeuTempo">
+      <header class="site-header" id="inicio">
+        <a class="logo-lockup" href="#inicio" aria-label="NoSeuTempo, voltar ao início">
           <span class="logo-mark" aria-hidden="true">
-            <img class="logo-clock" src="assets/home/logo-clock.png" alt="" />
-            <img class="logo-ring" src="assets/home/logo-ring.png" alt="" />
+            <span class="lm-arc"></span>
+            <svg viewBox="0 0 100 100" class="lm-hands">
+              <g fill="none" stroke-width="9" stroke-linecap="round">
+                <path d="M50 50 V28"></path>
+                <path d="M50 50 H72"></path>
+              </g>
+              <path class="lm-arrow" d="M72 64 L86 60 L78 74 Z"></path>
+            </svg>
           </span>
-          <img class="logo-wordmark" src="assets/home/logo-wordmark.png" alt="NoSeuTempo" />
+          <span class="logo-word">NoSeu<span class="t">Tempo</span></span>
         </a>
 
         <nav class="main-nav" aria-label="Navegação principal">
-          <a href="index.html">Início</a>
-          <a class="active" href="sobrenos.html">Sobre nós</a>
+          <a href="#inicio">Início</a>
+          <a class="active" href="#sobre">Sobre nós</a>
         </nav>
 
-        <a class="button button-primary" href="plataforma.html">Acessar plataforma <span aria-hidden="true">→</span></a>
+        <div class="header-actions">
+          <a class="btn btn-ghost" href="plataforma.html">Entrar</a>
+          <a class="btn btn-primary" href="cadastro.html">Criar minha conta</a>
+        </div>
       </header>
 
       <main>
@@ -1443,9 +1312,9 @@
         </section>
 
         <section class="secao-editorial-paged" id="metodo" aria-labelledby="titulo-geni">
-          <div class="editorial-grid-wrapper reverse">
-            <div class="editorial-bloco-imagem ordem-mobile-imagem">
-              <img class="editorial-imagem-fluida geni-ia-imagem" src="assets/geni-atualizada.png" alt="Geni IA na escrivaninha">
+          <div class="editorial-grid-wrapper reverse geni-grid-wrapper">
+            <div class="editorial-bloco-imagem geni-visual-clean ordem-mobile-imagem">
+              <img class="editorial-imagem-fluida geni-ia-imagem" src="assets/GeniIA.png" alt="Geni IA acompanhando o aprendizado com cuidado">
             </div>
 
             <div class="editorial-bloco-conteudo">
@@ -1527,7 +1396,7 @@
               <h2 id="titulo-direito">Acreditamos que aprender é um direito. E que cada pessoa merece encontrar <span class="purple-text">o seu jeito, no seu tempo.</span></h2>
               <p>É por isso que o NoSeuTempo existe. Para caminhar ao seu lado, com respeito, leveza e propósito.</p>
             </div>
-            <img class="cta-art" src="assets/familia-geni-aprendendo-v2.png" width="1536" height="1024" alt="Carol, Cauã e Geni IA aprendendo juntos com um livro aberto">
+            <img class="cta-art" src="assets/tela-home-ajustada.png" width="1672" height="941" alt="Família e Geni IA estudando com apoio do NoSeuTempo">
           </div>
         </section>
       </main>
